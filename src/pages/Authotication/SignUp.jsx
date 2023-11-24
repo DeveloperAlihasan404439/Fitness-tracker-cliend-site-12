@@ -117,7 +117,7 @@ const SignUp = () => {
                 type="file"
                 className="file-input mt-3 file-input-bordered w-full max-w-xs"
               />
-              <div className="form-control mt-6">
+              <div className="form-control">
                 <input
                   type="submit"
                   className="btn bg-[#7d46f5ee] hover:bg-[#5b1ae9] text-xl text-white uppercase"

@@ -1,4 +1,4 @@
-import '../../Sheard/Button/Button.css'
+import '../Sheard/Button/Button.css'
 const Banner = () => {
     return (
         <div className="bg-[#FFFFFF]">

@@ -105,16 +105,16 @@ const LogIn = () => {
                     </span>
                   </div>
                 </div>
-                <div className=" flex justify-between gap-5 items-center mt-6 w-full">
-                <div className="form-control w-[50%]">
+                <div className=" flex items-center">
+                <div className="form-control">
                   <input
                     type="submit"
                     className="btn bg-[#7d46f5ee] hover:bg-[#5b1ae9] text-xl text-white uppercase w-full"
                   />
                 </div>
-                <div className="form-control w-[50%]">
+                <div className="form-control">
                   <button onClick={hendelGoogle}
-                    className="btn bg-[#7d46f5ee] hover:bg-[#5b1ae9] text-xl text-white uppercase w-full"
+                    className="btn"
                   >Google</button>
                 </div>
                 </div>
