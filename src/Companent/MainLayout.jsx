@@ -1,14 +1,12 @@
 
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import Navber from '../Sheard/Navber';
+import { Outlet } from 'react-router-dom';
+import Navber from '../Sheard/Navber/Navber';
 
 const MainLayout = () => {
     return (
         <div>
             <Navber/>
+            <Outlet/>
         </div>
     );
 };

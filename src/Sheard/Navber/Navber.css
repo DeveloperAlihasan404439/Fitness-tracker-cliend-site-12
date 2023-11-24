@@ -1,0 +1,22 @@
+.dopdown {
+    position: relative;
+}
+
+.dopdown-manu {
+    position: absolute;
+    visibility: hidden;
+    top: 35px;
+    left: 0;
+    z-index: -1;
+    opacity: 0;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: .9s;
+    background-color: #fff;
+}
+.dopdown:hover .dopdown-manu {
+    visibility: visible;
+    transform: scaleY(1);
+    opacity: 1;
+    z-index: 1
+}

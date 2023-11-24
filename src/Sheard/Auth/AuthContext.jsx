@@ -1,12 +1,12 @@
 import { createContext, useEffect, useState } from "react";
 import {  createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "./Firebase";
-import useAxiosPublick from "../Hooks/useAxiosPublick";
+// import useAxiosPublick from "../Hooks/useAxiosPublick";
 const auth = getAuth(app)
 
 export const authProvider = createContext(null)
 const AuthContext = ({children}) => {
-    const axiosPublick = useAxiosPublick()
+    // const axiosPublick = useAxiosPublick()
     const [user, setUser] = useState(null)
     const [loader, setLoader] = useState(true)
 
@@ -31,7 +31,6 @@ const AuthContext = ({children}) => {
         const unSubscrib = onAuthStateChanged(auth, crrent =>{
             const userCrrent = crrent?.email || user?.email;
             const email = {email: userCrrent}
-            console.log(email)
             setUser(crrent)
             /* if(userCrrent){
                 axiosPublick.post(`/jwt`, email, {withCredentials: true})
@@ -51,7 +50,7 @@ const AuthContext = ({children}) => {
         return ()=>{
             unSubscrib()
         }
-    },[axiosPublick, user])
+    },[ user])
     const authinfo = {
         user,
         createUser,
