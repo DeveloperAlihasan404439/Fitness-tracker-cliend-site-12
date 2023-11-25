@@ -16,7 +16,7 @@ const Navber = () => {
   const navItems = (
     <>
       <NavLink>Home</NavLink>
-      <NavLink>Gallery</NavLink>
+      <NavLink to='/gallery'>Gallery</NavLink>
       <NavLink>Trainer</NavLink>
       <NavLink>Classes</NavLink>
       <NavLink>Dashboard</NavLink>
