@@ -1,6 +1,10 @@
 import { Helmet } from "react-helmet";
 import { NavLink, Outlet } from "react-router-dom";
-
+import { MdMenuBook,MdOutlinePadding  } from 'react-icons/md';
+import { FaHome,FaUsers } from "react-icons/fa";
+import { GrGallery } from "react-icons/gr";
+import { SiGoogleclassroom ,SiSubstack} from "react-icons/si";
+import { FaHandHoldingDollar } from "react-icons/fa6";
 const Dashboard = () => {
   const isAdmin = true;
   return (
@@ -11,14 +15,14 @@ const Dashboard = () => {
       <div className="flex ">
         <div className="drawer lg:drawer-open">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-          <div className="w-full flex justify-end drawer-content lg:hidden">
-            {/* Page content here */}
+          <div className=" drawer-content">
             <label
               htmlFor="my-drawer-2"
-              className="btn"
+              className="w-full pt-5 pr-5 flex justify-end drawer-content lg:hidden"
             >
-              Open drawer
+            <MdMenuBook className="text-3xl" />
             </label>
+            <Outlet />
           </div>
           <div className="drawer-side">
             <label
@@ -27,56 +31,62 @@ const Dashboard = () => {
               className="drawer-overlay"
             ></label>
               <div className="menu px-5 bg-[#5b1ae9] h-screen">
-              <ul className=" w-80 pb-2 text-white ">
+                <h1 className="text-3xl text-center text-white uppercase mt-10 mb-5">Dashbord</h1>
+              
+              <ul className="w-75 md:w-80 pb-2 text-white ">
                 {isAdmin ? (
                   <>
                     <NavLink
-                      to="/dashbord/adminHome"
+                      to="/dashboard/subscribers"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
+                      <SiSubstack/>
                       <h1>All subscribers</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashbord/addItems"
+                      to="/dashboard/"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
+                      <FaUsers/>
                       <h1>All Trainers</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashbord/menageItems"
+                      to="/dashboard/menageItems"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
+                      <MdOutlinePadding />
                       <h1>Applied Trainer</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashbord/menageBooking"
+                      to="/dashboard/menageBooking"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
+                      <FaHandHoldingDollar/>
                       <h1>Balance</h1>
                     </NavLink>
                   </>
                 ) : (
                   <>
                     <NavLink
-                      to="/dashbord/userHome"
+                      to="/dashboard/userHome"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
                       <h1>User Home</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashbord/payment"
+                      to="/dashboard/payment"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
                       <h1>reservation</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashbord/paymentHistroy"
+                      to="/dashboard/paymentHistroy"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
                       <h1>payment history</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashbord/myCrat"
+                      to="/dashboard/myCrat"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
                       <h1>my cart</h1>
@@ -91,38 +101,34 @@ const Dashboard = () => {
                 )}
               </ul>
               <h1 className="border-2 border-white my-3"></h1>
-              <ul className="px-1 text-white">
+              <ul className="w-75 md:w-80 px-1 text-white">
                 <NavLink
                   to="/"
                   className="flex gap-5 items-center text-xl uppercase mb-2"
-                >
+                ><FaHome/>
                   <h1>Home</h1>
                 </NavLink>
                 <NavLink
-                  to="/menu"
+                  to='/gallery'
                   className="flex gap-5 items-center text-xl uppercase mb-2"
                 >
-                  <h1>Menu</h1>
+                  <GrGallery/>
+                  Gallery
                 </NavLink>
                 <NavLink
-                  to="/shops"
+                  to="/classes"
                   className="flex gap-5 items-center text-xl uppercase mb-2"
                 >
-                  <h1>Shop</h1>
-                </NavLink>
-                <NavLink
-                  to="/contact"
-                  className="flex gap-5 items-center text-xl uppercase mb-2"
-                >
-                  <h1>contact</h1>
+                  <SiGoogleclassroom/>
+                  <h1>Classes</h1>
                 </NavLink>
               </ul>
             </div>
           </div>
         </div>
-        <div className="flex-1 w-11/12 mx-auto">
-          <Outlet />
-        </div>
+        {/* <div className="flex-1 w-11/12 mx-auto">
+          
+        </div> */}
       </div>
     </>
   );

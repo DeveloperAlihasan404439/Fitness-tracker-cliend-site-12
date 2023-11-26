@@ -13,7 +13,7 @@ const Newsletter = () => {
             name,
             email
         }
-        axiosPublick.post("/users", userInfo).then((res) => {
+        axiosPublick.post("/subscribers", userInfo).then((res) => {
             if (res.data.insertedId) {
                 target.reset()
               Swal.fire({
@@ -74,7 +74,7 @@ const Newsletter = () => {
                     </div>
                   <button
                     type="submit"
-                    className="w-full bg-[#854cff9c] mt-2 text-white text-xl space py-1 rounded-lg hover:bg-[#5B1AE9]" style={{letterSpacing: '5px'}}
+                    className="w-full bg-[#854cff9c] mt-5 text-white text-xl space py-1 rounded-lg hover:bg-[#5B1AE9]" style={{letterSpacing: '5px'}}
                   >
                     Subscribe Now
                   </button>
