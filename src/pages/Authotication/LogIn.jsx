@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { GoogleAuthProvider } from "firebase/auth";
+import useAxiosPublick from "../../Sheard/Hooks/useAxiosPublick";
 
 const LogIn = () => {
     const [open, setOpen] = useState(true);
@@ -13,6 +14,7 @@ const LogIn = () => {
     const provider = new GoogleAuthProvider()
     const navigate = useNavigate();
     const location = useLocation();
+    const axiosPublick = useAxiosPublick()
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async (data) => {
         const email = data.email;
@@ -41,18 +43,37 @@ const LogIn = () => {
     const hendelGoogle = ()=>{
         loginGoogle(provider)
         .then(result =>{
-            if(result.user){
-                Swal.fire({
-                    position: "center",
-                    icon: "success",
-                    title: "Successfull login user",
-                    showConfirmButton: false,
-                    background: '#5b1ae9',
-                    color: '#FDFDFD',
-                    timer: 1500
-                  }); 
-                navigate(location?.state ? location?.state : "/"); 
+            if(result?.user){
+              const userInfo = {
+                email: result.user?.email,
+                name: result.user?.displayName
             }
+            axiosPublick.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "successfull has the google login",
+                  showConfirmButton: false,
+                  background: "#5b1ae9",
+                  color: "#FDFDFD",
+                  timer: 1500,
+                });
+                navigate(location?.state ? location?.state : "/"); 
+              }
+            })
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "successfull has the google login",
+              showConfirmButton: false,
+              background: "#5b1ae9",
+              color: "#FDFDFD",
+              timer: 1500,
+            });
+            navigate(location?.state ? location?.state : "/"); 
+          }
         })
         .catch(error =>{
             setError(error.message)

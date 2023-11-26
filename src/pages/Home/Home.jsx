@@ -2,6 +2,7 @@ import About from "../../Companent/About";
 import Banner from "../../Companent/Banner";
 import Featured from "../../Companent/Featured";
 import {Helmet} from "react-helmet";
+import Newsletter from "../../Companent/Newsletter";
 const Home = () => {
     return (
         <div>
@@ -11,6 +12,7 @@ const Home = () => {
             <Banner/>
             <Featured/>
             <About/>
+            <Newsletter/>
         </div>
     );
 };

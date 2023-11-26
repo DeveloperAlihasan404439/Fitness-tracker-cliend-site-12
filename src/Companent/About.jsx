@@ -1,5 +1,5 @@
 import SectionTitle from "../Sheard/SectionTitle/SectionTitle";
-import about from "../assets/img/about.png";
+import about from "../assets/img/about.jpg";
 const About = () => {
   return (
     <div>

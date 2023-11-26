@@ -1,12 +1,13 @@
 import { createContext, useEffect, useState } from "react";
 import {  createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from "firebase/auth";
 import app from "./Firebase";
-// import useAxiosPublick from "../Hooks/useAxiosPublick";
+import useAxios from "../Hooks/useAxios";
 const auth = getAuth(app)
 
 export const authProvider = createContext(null)
+
 const AuthContext = ({children}) => {
-    // const axiosPublick = useAxiosPublick()
+    const axiosSecure = useAxios()
     const [user, setUser] = useState(null)
     const [loader, setLoader] = useState(true)
 
@@ -30,27 +31,26 @@ const AuthContext = ({children}) => {
     useEffect(()=>{
         const unSubscrib = onAuthStateChanged(auth, crrent =>{
             const userCrrent = crrent?.email || user?.email;
-            const email = {email: userCrrent}
             setUser(crrent)
-            /* if(userCrrent){
-                axiosPublick.post(`/jwt`, email, {withCredentials: true})
+            if(userCrrent){
+                axiosSecure.post(`/jwt`,{email:userCrrent}  )
                 .then(res =>{
                     console.log(res.data);
                     setLoader(false)
                 })
             }
             else{
-                axiosPublick.post(`/logout`,email, {withCredentials: true})
+                axiosSecure.post(`/logout`,{email:userCrrent}, )
                 .then(res =>{
                     console.log(res.data,);
                 })
-            } */
+            }
             setLoader(false)
         })
         return ()=>{
             unSubscrib()
         }
-    },[ user])
+    },[ user,axiosSecure])
     const authinfo = {
         user,
         createUser,

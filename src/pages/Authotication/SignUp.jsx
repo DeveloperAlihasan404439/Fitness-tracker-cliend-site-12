@@ -1,30 +1,32 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
-import useAxios from "../../Sheard/Hooks/useAxios";
 import useAuth from "../../Sheard/Hooks/useAuth";
 import { updateProfile } from "firebase/auth";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
+import useAxiosPublick from "../../Sheard/Hooks/useAxiosPublick";
 //  images hostion
 const VITE_IMAGES_HOSTING_KEY = import.meta.env.VITE_IMAGES_HOSTING_KEY;
 const images_hosting_api = `https://api.imgbb.com/1/upload?key=${VITE_IMAGES_HOSTING_KEY}`;
 //  images hostion
 const SignUp = () => {
   const [open, setOpen] = useState(true);
-  const axiosSecure = useAxios();
   const { createUser, logout } = useAuth();
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  const axiosPublick = useAxiosPublick();
+
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
-    setError('')
+    setError("");
     const fromImages = { image: data.image[0] };
-    const res = await axiosSecure.post(images_hosting_api, fromImages, {
+    const res = await axiosPublick.post(images_hosting_api, fromImages, {
       headers: {
         "content-type": "multipart/form-data",
-      },
-    });
+      }
+    })
     const photo = res.data?.data?.display_url;
     if (res.data.success) {
       const name = data.name;
@@ -36,18 +38,26 @@ const SignUp = () => {
             displayName: name,
             photoURL: photo,
           }).then(() => {
-            logout();
-            reset();
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Your work has been saved",
-              showConfirmButton: false,
-              background: '#5b1ae9',
-              color: '#FDFDFD',
-              timer: 1500
+            const userInfo = {
+              name,
+              email,
+            };
+            axiosPublick.post("/users", userInfo).then((res) => {
+              if (res.data.insertedId) {
+                logout();
+                reset();
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Your work has been saved",
+                  showConfirmButton: false,
+                  background: "#5b1ae9",
+                  color: "#FDFDFD",
+                  timer: 1500,
+                });
+                navigate("/login");
+              }
             });
-            navigate('/login')
           });
         })
         .catch((error) => {
@@ -123,10 +133,13 @@ const SignUp = () => {
                   className="btn bg-[#7d46f5ee] hover:bg-[#5b1ae9] text-xl text-white uppercase"
                 />
               </div>
-              {
-                error? <p>{error}</p>:''
-              }
-              <p>Already have an accound <Link to='/login' className="text-[#5b1ae9] underline">Please Login</Link></p>
+              {error ? <p>{error}</p> : ""}
+              <p>
+                Already have an accound{" "}
+                <Link to="/login" className="text-[#5b1ae9] underline">
+                  Please Login
+                </Link>
+              </p>
             </form>
           </div>
         </div>

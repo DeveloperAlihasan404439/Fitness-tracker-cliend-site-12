@@ -19,7 +19,7 @@ const Navber = () => {
       <NavLink to='/gallery'>Gallery</NavLink>
       <NavLink>Trainer</NavLink>
       <NavLink>Classes</NavLink>
-      <NavLink>Dashboard</NavLink>
+      <NavLink to='/dashboard'>Dashboard</NavLink>
       <NavLink>Community</NavLink>
     </>
   );
