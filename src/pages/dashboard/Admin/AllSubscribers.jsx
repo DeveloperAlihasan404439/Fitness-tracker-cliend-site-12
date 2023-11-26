@@ -12,7 +12,7 @@ const AllSubscribers = () => {
     },[axiosPublick])
 
     return (
-        <div>
+        <>
             <Helmet>
                 <title>Body Pulse | Subsvribers</title>
             </Helmet>
@@ -38,7 +38,7 @@ const AllSubscribers = () => {
             </tbody>
           </table>
         </div>
-        </div>
+        </>
     );
 };
 

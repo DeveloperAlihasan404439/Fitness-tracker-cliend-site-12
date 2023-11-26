@@ -6,6 +6,9 @@ import LogIn from "../../pages/Authotication/LogIn";
 import Gallery from "../../pages/Gallery/Gallery";
 import Dashboard from "../../pages/Layout/Dashboard/Dashboard";
 import AllSubscribers from "../../pages/dashboard/Admin/AllSubscribers";
+import Trainer from "../../Companent/Trainer";
+import TrainerApply from "../../Companent/TrainerApply";
+import AppliedTrainer from "../../pages/dashboard/Admin/AppliedTrainer";
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -18,6 +21,14 @@ export const router = createBrowserRouter([
             {
                 path: '/gallery',
                 element: <Gallery/>
+            },
+            {
+                path: '/tariner',
+                element: <Trainer/>
+            },
+            {
+                path: '/tarinerApply',
+                element: <TrainerApply/>
             },
             {
                 path: '/signup',
@@ -37,6 +48,11 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/subscribers',
                 element: <AllSubscribers/>,
+            },
+            {
+                path: '/dashboard/appliedTrainer',
+                element: <AppliedTrainer/>,
+                loader: ()=> fetch('http://localhost:5000/tariners')
             },
             // -----------------------------Admin Dashboard End----------------------
         ]

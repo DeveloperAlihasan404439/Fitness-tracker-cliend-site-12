@@ -51,7 +51,7 @@ const Dashboard = () => {
                       <h1>All Trainers</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashboard/menageItems"
+                      to="/dashboard/appliedTrainer"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
                       <MdOutlinePadding />
