@@ -97,6 +97,7 @@ const TrainerApply = () => {
             available_day: selectedDay,
             skills: values,
             trainer_photo: photo,
+            experience: data.experience,
             status: "pending"
         }
       axiosPublick.post("/tariners", tranirInfo).then((res) => {
@@ -194,9 +195,21 @@ const TrainerApply = () => {
                   <option value="Thursday">Thursday</option>
                 </select>
               </div>
-              <div className="form-control w-full md:w-[50%]">
+              
+            <div className="form-control w-full md:w-[50%]">
+              <label className="label">
+                <span className="label-text">Years of Experience</span>
+              </label>
+                <input
+                  {...register("experience", { required: true })}
+                  placeholder="age"
+                  className="input input-bordered w-full"
+                />
+            </div>
+            </div>
+            <div className="form-control w-full">
                 <label className="label">
-                  <span className="label-text">rofile Image</span>
+                  <span className="label-text">Profile Image</span>
                 </label>
                 <input
                   {...register("image")}
@@ -204,7 +217,6 @@ const TrainerApply = () => {
                   className="file-input mt-3 file-input-bordered w-full "
                 />
               </div>
-            </div>
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Discription</span>

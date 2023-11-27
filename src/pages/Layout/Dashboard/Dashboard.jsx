@@ -4,7 +4,7 @@ import { MdMenuBook,MdOutlinePadding  } from 'react-icons/md';
 import { FaHome,FaUsers } from "react-icons/fa";
 import { GrGallery } from "react-icons/gr";
 import { SiGoogleclassroom ,SiSubstack} from "react-icons/si";
-import { FaHandHoldingDollar } from "react-icons/fa6";
+import { FaHandHoldingDollar,FaUserTie  } from "react-icons/fa6";
 const Dashboard = () => {
   const isAdmin = true;
   return (
@@ -56,6 +56,13 @@ const Dashboard = () => {
                     >
                       <MdOutlinePadding />
                       <h1>Applied Trainer</h1>
+                    </NavLink>
+                    <NavLink
+                      to="/dashboard/allusers"
+                      className="flex gap-5 items-center text-xl uppercase mb-2"
+                    >
+                      <FaUserTie />
+                      <h1>All Users</h1>
                     </NavLink>
                     <NavLink
                       to="/dashboard/menageBooking"

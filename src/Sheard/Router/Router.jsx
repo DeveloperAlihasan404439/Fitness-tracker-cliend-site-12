@@ -9,6 +9,7 @@ import AllSubscribers from "../../pages/dashboard/Admin/AllSubscribers";
 import Trainer from "../../Companent/Trainer";
 import TrainerApply from "../../Companent/TrainerApply";
 import AppliedTrainer from "../../pages/dashboard/Admin/AppliedTrainer";
+import Users from "../../pages/dashboard/Admin/Users";
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -53,6 +54,10 @@ export const router = createBrowserRouter([
                 path: '/dashboard/appliedTrainer',
                 element: <AppliedTrainer/>,
                 loader: ()=> fetch('http://localhost:5000/tariners')
+            },
+            {
+                path: '/dashboard/allusers',
+                element: <Users/>
             },
             // -----------------------------Admin Dashboard End----------------------
         ]
