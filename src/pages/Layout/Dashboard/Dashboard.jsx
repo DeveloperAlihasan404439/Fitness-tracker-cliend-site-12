@@ -44,7 +44,7 @@ const Dashboard = () => {
                       <h1>All subscribers</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashboard/"
+                      to="/dashboard/allTrainers"
                       className="flex gap-5 items-center text-xl uppercase mb-2"
                     >
                       <FaUsers/>

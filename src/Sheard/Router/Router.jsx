@@ -11,6 +11,7 @@ import AppliedTrainer from "../../pages/dashboard/Admin/AppliedTrainer";
 import Users from "../../pages/dashboard/Admin/Users";
 import Trainer from "../../pages/dashboard/Trainer/Trainer";
 import SingleTrainer from "../../pages/dashboard/Trainer/SingleTrainer";
+import TrainerAll from "../../pages/dashboard/Admin/TrainerAll";
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -57,9 +58,12 @@ export const router = createBrowserRouter([
                 element: <AllSubscribers/>,
             },
             {
+                path: "/dashboard/allTrainers",
+                element: <TrainerAll/>,
+            },
+            {
                 path: '/dashboard/appliedTrainer',
                 element: <AppliedTrainer/>,
-                loader: ()=> fetch('http://localhost:5000/tariners')
             },
             {
                 path: '/dashboard/allusers',

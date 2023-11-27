@@ -4,7 +4,6 @@ const SingleTrainer = () => {
   const loader = useLoaderData();
   const {
     trainer_photo,
-    status,
     skills,
     name,
     email,
@@ -36,9 +35,6 @@ const SingleTrainer = () => {
           Email : {email}
         </h1>
         <h1 className="text-lg md:text-xl">Age : {age}</h1>
-        <h1 className="text-lg md:text-xl">
-          Experience : {experience ? experience : "12"} Year
-        </h1>
         <h1 className="text-lg md:text-xl">
           Experience : {experience ? experience : "12"} Year
         </h1>
