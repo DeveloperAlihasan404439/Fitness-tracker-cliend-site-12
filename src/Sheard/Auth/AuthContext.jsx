@@ -35,7 +35,7 @@ const AuthContext = ({children}) => {
             if(userCrrent){
                 axiosSecure.post(`/jwt`,{email:userCrrent}  )
                 .then(res =>{
-                    
+                    console.log(res.data)
                     setLoader(false)
                 })
             }

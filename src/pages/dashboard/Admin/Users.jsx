@@ -4,12 +4,22 @@ import useUsers from "../../../Sheard/Hooks/useUsers";
 import useAxios from "../../../Sheard/Hooks/useAxios";
 
 const Users = () => {
-  const { users, refetch } = useUsers();
+  const { usersData, refetch } = useUsers();
   const axiosSecure = useAxios();
 
   const hendelAdmin = (id) => {
     axiosSecure.put(`/users?id=${id}`).then((res) => {
-      if (res.data.modifiedCount) {
+      if (res.data.modifiedCount>0) {
+        refetch()
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Successfull login user",
+          showConfirmButton: false,
+          background: '#5b1ae9',
+          color: '#FDFDFD',
+          timer: 1500
+        }); 
       }
     });
   };
@@ -32,7 +42,7 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {users?.map((user, i) => (
+            {usersData?.map((user, i) => (
               <tr
                 key={user._id}
                 className="bg-base-100 border-b-2 border-black"

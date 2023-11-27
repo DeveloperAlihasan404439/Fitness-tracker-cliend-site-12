@@ -5,8 +5,11 @@ import { FaHome,FaUsers } from "react-icons/fa";
 import { GrGallery } from "react-icons/gr";
 import { SiGoogleclassroom ,SiSubstack} from "react-icons/si";
 import { FaHandHoldingDollar,FaUserTie  } from "react-icons/fa6";
+import useAdmin from "../../../Sheard/Hooks/useAdmin";
 const Dashboard = () => {
-  const isAdmin = true;
+  const {isAdmin} = useAdmin();
+  console.log(isAdmin)
+  // const isAdmin = true;
   return (
     <>
       <Helmet>

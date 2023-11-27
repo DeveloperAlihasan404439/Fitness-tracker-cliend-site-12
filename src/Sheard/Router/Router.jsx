@@ -12,6 +12,7 @@ import Users from "../../pages/dashboard/Admin/Users";
 import Trainer from "../../pages/dashboard/Trainer/Trainer";
 import SingleTrainer from "../../pages/dashboard/Trainer/SingleTrainer";
 import TrainerAll from "../../pages/dashboard/Admin/TrainerAll";
+import ClassAll from "../../pages/Class/ClassAll";
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp/>
+            },
+            {
+                path: '/classAll',
+                element: <ClassAll/>
             },
             {
                 path: '/login',

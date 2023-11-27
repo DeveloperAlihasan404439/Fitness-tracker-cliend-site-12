@@ -18,7 +18,7 @@ const Navber = () => {
       <NavLink>Home</NavLink>
       <NavLink to='/gallery'>Gallery</NavLink>
       <NavLink to = '/tariner'>Trainer</NavLink>
-      <NavLink>Classes</NavLink>
+      <NavLink to='/classAll'>Classes</NavLink>
       <NavLink to='/dashboard'>Dashboard</NavLink>
       <NavLink>Community</NavLink>
     </>

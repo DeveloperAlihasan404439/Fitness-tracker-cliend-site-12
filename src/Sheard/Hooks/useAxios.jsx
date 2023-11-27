@@ -6,18 +6,22 @@ const axiosSecure = axios.create({
     withCredentials: true
 })
 const useAxios = () => {
-    /* const navigate = useNavigate();
-    const {logout} = useAuth()
-    axiosSecure.interceptors.response.use((response)=>{
-        return response
-    },async (error) =>{
-        const status = error.response?.status;
-        if(status === 401 || status === 403){
-            await logout()
+    // const { logOut } = useAuth() || {}
+    // const navigate = useNavigate()
+
+    /* axiosSecure.interceptors.response.use(function (response) {
+        return response;
+    }, async function (error) {
+        if (error.response.status === 401 || error.response.status === 403) {
+            await logOut()
+            console.log('log out')
             navigate('/login')
         }
         return Promise.reject(error);
-    }) */
+    }); */
+
     return axiosSecure;
 };
 export default useAxios;
+
+

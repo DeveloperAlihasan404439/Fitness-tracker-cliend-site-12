@@ -1,15 +1,15 @@
 import { Helmet } from "react-helmet";
 import SectionTitle from "../../../Sheard/SectionTitle/SectionTitle";
 import { useEffect, useState } from "react";
-import useAxiosPublick from "../../../Sheard/Hooks/useAxiosPublick";
+import useAxios from "../../../Sheard/Hooks/useAxios";
 
 const AllSubscribers = () => {
     const [subscribers, setSubscribers] = useState([])
-    const axiosPublick = useAxiosPublick()
+    const axiosSecure = useAxios()
     useEffect(()=>{
-        axiosPublick.get('/subscribers')
+      axiosSecure.get('/subscribers')
         .then(res =>setSubscribers(res.data))
-    },[axiosPublick])
+    },[axiosSecure])
 
     return (
         <>
@@ -17,7 +17,7 @@ const AllSubscribers = () => {
                 <title>Body Pulse | Subsvribers</title>
             </Helmet>
             <SectionTitle heading='Subscribers' title="All Subscribers Users"/>
-            <div className="w-8/12 mx-auto overflow-x-auto">
+            <div className="w-8/12 mx-auto overflow-x-auto rounded-t-xl">
           <table className="table">
             <thead>
               <tr className="w-full bg-[#5b1ae9] text-white ">
