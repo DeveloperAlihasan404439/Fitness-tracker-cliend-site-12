@@ -1,5 +1,8 @@
+import { Link } from "react-router-dom";
+
 const TrainerCart = ({ trainer }) => {
   const {
+    _id,
     social,
     trainer_photo,
     available_time,
@@ -39,7 +42,7 @@ const TrainerCart = ({ trainer }) => {
         ))}
       </div>
       <div className="mt-10">
-      <button className="absolute bottom-0 left-0 w-full text-center bg-[#37167e] hover:bg-[#5b1ae9] py-2 rounded-b-lg text-white text-xl">Know more</button>
+      <Link to={`/tarinerApply/${_id}`} className="absolute bottom-0 left-0 w-full text-center bg-[#37167e] hover:bg-[#5b1ae9] py-2 rounded-b-lg text-white text-xl">Know more</Link>
 
       </div>
     </div>

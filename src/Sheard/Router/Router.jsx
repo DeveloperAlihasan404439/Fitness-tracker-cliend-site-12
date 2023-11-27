@@ -10,6 +10,7 @@ import TrainerApply from "../../Companent/TrainerApply";
 import AppliedTrainer from "../../pages/dashboard/Admin/AppliedTrainer";
 import Users from "../../pages/dashboard/Admin/Users";
 import Trainer from "../../pages/dashboard/Trainer/Trainer";
+import SingleTrainer from "../../pages/dashboard/Trainer/SingleTrainer";
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -30,6 +31,11 @@ export const router = createBrowserRouter([
             {
                 path: '/tarinerApply',
                 element: <TrainerApply/>
+            },
+            {
+                path: '/tarinerApply/:id',
+                element: <SingleTrainer/>,
+                loader: ({params})=> fetch(`http://localhost:5000/confrimTariners/${params.id}`)
             },
             {
                 path: '/signup',
