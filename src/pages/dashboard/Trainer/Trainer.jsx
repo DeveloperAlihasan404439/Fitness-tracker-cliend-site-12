@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
-import useAxiosPublick from "../Sheard/Hooks/useAxiosPublick";
-import { useEffect } from "react";
-import SectionTitle from "../Sheard/SectionTitle/SectionTitle";
+import useAxiosPublick from "../../../Sheard/Hooks/useAxiosPublick";
+import { useEffect, useState } from "react";
+import SectionTitle from "../../../Sheard/SectionTitle/SectionTitle";
+import TrainerCart from "./TrainerCart";
 const Trainer = () => {
+    const [allTrainer, setAllTrainer] = useState([])
     const axiosPublick = useAxiosPublick()
     useEffect(()=>{
         axiosPublick.get('/confrimTariners')
-        .then(res => console.log(res.data))
+        .then(res =>setAllTrainer(res.data))
     },[axiosPublick])
     return (
         <>
@@ -19,6 +21,12 @@ const Trainer = () => {
                             <p className="text-center md:w-10/12 mx-auto text-lg md:text-xl mt-3 text-white"> trainers not only focus on physical strength but also emphasize mental well-being. Their dedication fosters a culture of commitment and discipline, inspiring clients to achieve their desired fitness milestones.</p>
                         </div>
                     </div>
+                </div>
+                <SectionTitle heading="All tranier" title="All Traniers Profile "/>
+                <div className="md:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {
+                allTrainer?.map(trainer => <TrainerCart key={trainer._id} trainer={trainer}/>)
+                }
                 </div>
             </div>
             <div className="flex justify-center my-5">

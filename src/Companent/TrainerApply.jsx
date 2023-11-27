@@ -13,71 +13,68 @@ const TrainerApply = () => {
   const [selectedDay, setSelectedDay] = useState([]);
   const [selectedTime, setSelectedTime] = useState([]);
   const [loding, setLoding] = useState(false);
-    const {user} = useAuth()
+  const { user } = useAuth();
   const axiosPublick = useAxiosPublick();
-//----------------------- hendel maltipol skill secelect------------------------
+  //----------------------- hendel maltipol skill secelect------------------------
   const handleChange = (event) => {
     const name = event.target.name;
     if (!values.includes(name)) {
-        setValues([...values, name]); 
-      }
-      else{
-          Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Alrady selected the day",
-              showConfirmButton: false,
-              background: "#5b1ae9",
-              color: "#FDFDFD",
-              timer: 1500,
-            });
-      }
+      setValues([...values, name]);
+    } else {
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Alrady selected the day",
+        showConfirmButton: false,
+        background: "#5b1ae9",
+        color: "#FDFDFD",
+        timer: 1500,
+      });
+    }
   };
   //----------------------- hendel maltipol day secelect------------------------
- const handleSelectDay = (event) => {
+  const handleSelectDay = (event) => {
     const day = event.target.value;
 
     if (day !== "Select Day") {
-        if (!selectedDay.includes(day)) {
-          setSelectedDay([...selectedDay, day]); 
-        }
-        else{
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Alrady selected the day",
-                showConfirmButton: false,
-                background: "#5b1ae9",
-                color: "#FDFDFD",
-                timer: 1500,
-              });
-        }
+      if (!selectedDay.includes(day)) {
+        setSelectedDay([...selectedDay, day]);
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Alrady selected the day",
+          showConfirmButton: false,
+          background: "#5b1ae9",
+          color: "#FDFDFD",
+          timer: 1500,
+        });
       }
+    }
   };
- const handleSelectTime = (event) => {
+  const handleSelectTime = (event) => {
     const time = event.target.value;
     if (time !== "Select Time") {
-        if (!selectedTime.includes(time)) {
-            setSelectedTime([...selectedTime, time]);
-        }
-        else{
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Alrady selected the day",
-                showConfirmButton: false,
-                background: "#5b1ae9",
-                color: "#FDFDFD",
-                timer: 1500,
-              });
-        }
+      if (!selectedTime.includes(time)) {
+        setSelectedTime([...selectedTime, time]);
+      } else {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Alrady selected the day",
+          showConfirmButton: false,
+          background: "#5b1ae9",
+          color: "#FDFDFD",
+          timer: 1500,
+        });
       }
+    }
   };
   //----------------------- hendel form------------------------
- const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = async (data) => {
-    setLoding(true)
+    setLoding(true);
     const fromImages = { image: data.image[0] };
 
     const res = await axiosPublick.post(images_hosting_api, fromImages, {
@@ -87,23 +84,24 @@ const TrainerApply = () => {
     });
     const photo = res.data?.data?.display_url;
     if (res.data?.data?.display_url) {
-        setLoding(false)
-        const tranirInfo = {
-            discription: data.discription,
-            age: data.age,
-            email: data.email,
-            name: data.name,
-            available_time: selectedTime,
-            available_day: selectedDay,
-            skills: values,
-            trainer_photo: photo,
-            experience: data.experience,
-            status: "pending"
-        }
+      setLoding(false);
+      const tranirInfo = {
+        discription: data.discription,
+        age: data.age,
+        email: data.email,
+        name: data.name,
+        available_time: selectedTime,
+        available_day: selectedDay,
+        skills: values,
+        trainer_photo: photo,
+        experience: data.experience,
+        social: data.social,
+        status: "pending",
+      };
       axiosPublick.post("/tariners", tranirInfo).then((res) => {
         if (res.data.insertedId) {
           reset();
-        //   setSelectedDay()
+          //   setSelectedDay()
           Swal.fire({
             position: "center",
             icon: "success",
@@ -140,7 +138,7 @@ const TrainerApply = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  {...register("email", { required: true, })}
+                  {...register("email", { required: true })}
                   defaultValue={user?.email}
                   placeholder="email"
                   className="input input-bordered w-full"
@@ -168,7 +166,7 @@ const TrainerApply = () => {
                   name="day"
                   className="input input-bordered w-full"
                 >
-                  <option >Select Time</option>
+                  <option>Select Time</option>
                   <option value="04.00pm-06.00pm">04.00pm-06.00pm</option>
                   <option value="05.00pm-07.00pm">05.00pm-07.00pm</option>
                   <option value="06.00pm-08.00pm">06.00pm-08.00pm</option>
@@ -186,7 +184,7 @@ const TrainerApply = () => {
                   name="day"
                   className="input input-bordered w-full"
                 >
-                  <option >Select Day</option>
+                  <option>Select Day</option>
                   <option value="Saturday">Saturday</option>
                   <option value="Sunday">Sunday</option>
                   <option value="Monday">Monday</option>
@@ -195,28 +193,43 @@ const TrainerApply = () => {
                   <option value="Thursday">Thursday</option>
                 </select>
               </div>
-              
-            <div className="form-control w-full md:w-[50%]">
-              <label className="label">
-                <span className="label-text">Years of Experience</span>
-              </label>
+
+              <div className="form-control w-full md:w-[50%]">
+                <label className="label">
+                  <span className="label-text">Years of Experience</span>
+                </label>
                 <input
                   {...register("experience", { required: true })}
                   placeholder="age"
                   className="input input-bordered w-full"
                 />
+              </div>
             </div>
-            </div>
-            <div className="form-control w-full">
-                <label className="label">
-                  <span className="label-text">Profile Image</span>
+            <div className="md:flex justify-center items-center gap-5">
+              <div className="form-control w-full md:w-[50%]">
+              <label className="label">
+                  <span className="label-text">Social icons</span>
                 </label>
                 <input
-                  {...register("image")}
-                  type="file"
-                  className="file-input mt-3 file-input-bordered w-full "
+                  {...register("social", { required: true })}
+                  placeholder="age"
+                  type='url'
+                  className="input input-bordered w-full"
                 />
               </div>
+
+              
+            <div className="form-control w-full md:w-[50%]">
+              <label className="label">
+                <span className="label-text">Profile Image</span>
+              </label>
+              <input
+                {...register("image")}
+                type="file"
+                className="file-input mt-3 file-input-bordered w-full "
+              />
+            </div>
+            </div>
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Discription</span>
@@ -325,15 +338,15 @@ const TrainerApply = () => {
             </div>
 
             <div className="form-control">
-                {
-                    loding?<button type="submit" className='btn'>
-                    Waiting...
-                  </button>
-                  :<button type="submit" className='btn'>
+              {loding ? (
+                <button type="submit" className="btn">
+                  Waiting...
+                </button>
+              ) : (
+                <button type="submit" className="btn">
                   Make Apply
                 </button>
-                }
-              
+              )}
             </div>
           </form>
         </div>

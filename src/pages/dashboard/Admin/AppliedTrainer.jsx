@@ -27,6 +27,7 @@ const AppliedTrainer = () => {
           email: modalData.email,
           age: modalData.age,
           experience: modalData.experience,
+          social: modalData.social,
           status: "trainer",
         };
         axiosSecure.post(`/confrimTariners`, modifiedCount).then((res) => {

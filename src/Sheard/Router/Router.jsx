@@ -6,10 +6,10 @@ import LogIn from "../../pages/Authotication/LogIn";
 import Gallery from "../../pages/Gallery/Gallery";
 import Dashboard from "../../pages/Layout/Dashboard/Dashboard";
 import AllSubscribers from "../../pages/dashboard/Admin/AllSubscribers";
-import Trainer from "../../Companent/Trainer";
 import TrainerApply from "../../Companent/TrainerApply";
 import AppliedTrainer from "../../pages/dashboard/Admin/AppliedTrainer";
 import Users from "../../pages/dashboard/Admin/Users";
+import Trainer from "../../pages/dashboard/Trainer/Trainer";
 export const router = createBrowserRouter([
     {
         path: '/',
