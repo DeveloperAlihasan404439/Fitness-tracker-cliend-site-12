@@ -1,4 +1,4 @@
-import {createBrowserRouter} from "react-router-dom"; 
+import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../../pages/Layout/MainLayout";
 import SignUp from "../../pages/Authotication/SignUp";
 import Home from "../../pages/Home/Home";
@@ -14,6 +14,11 @@ import SingleTrainer from "../../pages/dashboard/Trainer/SingleTrainer";
 import TrainerAll from "../../pages/dashboard/Admin/TrainerAll";
 import ClassAll from "../../pages/Class/ClassAll";
 import AddNewClass from "../../pages/dashboard/Trainer/AddNewClass";
+import ClassDetels from "../../pages/Class/ClassDetels";
+import Community from "../../pages/Community/Community";
+import ProfileMember from "../../pages/dashboard/Member/ProfileMember";
+import ProfileMemberEdit from "../../pages/dashboard/Member/ProfileMemberEdit";
+
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -38,7 +43,10 @@ export const router = createBrowserRouter([
             {
                 path: '/tarinerApply/:id',
                 element: <SingleTrainer/>,
-                loader: ({params})=> fetch(`http://localhost:5000/confrimTariners/${params.id}`)
+            },
+            {
+                path: '/community',
+                element: <Community/>,
             },
             {
                 path: '/signup',
@@ -47,6 +55,10 @@ export const router = createBrowserRouter([
             {
                 path: '/classAll',
                 element: <ClassAll/>
+            },
+            {
+                path: '/classAll/:id',
+                element: <ClassDetels/>
             },
             {
                 path: '/login',
@@ -82,7 +94,18 @@ export const router = createBrowserRouter([
                 path: '/dashboard/addNowClass',
                 element: <AddNewClass/>
             },
+            
             // -----------------------------Trainer Dashboard End----------------------
+            // -----------------------------membur Dashboard End----------------------
+            {
+                path: '/dashboard/profile',
+                element: <ProfileMember/>
+            },
+            {
+                path: '/dashboard/profileEdit',
+                element: <ProfileMemberEdit/>
+            },
+            // -----------------------------membur Dashboard End----------------------
         ]
     }
 ])

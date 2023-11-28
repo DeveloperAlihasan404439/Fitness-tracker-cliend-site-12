@@ -15,12 +15,12 @@ const Navber = () => {
   const {user,logout} = useAuth()
   const navItems = (
     <>
-      <NavLink>Home</NavLink>
+      <NavLink to = "/">Home</NavLink>
       <NavLink to='/gallery'>Gallery</NavLink>
       <NavLink to = '/tariner'>Trainer</NavLink>
       <NavLink to='/classAll'>Classes</NavLink>
       <NavLink to='/dashboard'>Dashboard</NavLink>
-      <NavLink>Community</NavLink>
+      <NavLink to="/community">Community</NavLink>
     </>
   );
   return (

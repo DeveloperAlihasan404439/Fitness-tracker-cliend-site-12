@@ -1,7 +1,15 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import useAxios from "../../../Sheard/Hooks/useAxios";
+import { useEffect, useState } from "react";
 
 const SingleTrainer = () => {
-  const loader = useLoaderData();
+  const [loader, setLoader] = useState([])
+  const axiosSecure = useAxios()
+  const {id} = useParams()
+  useEffect(()=>{
+    axiosSecure.get(`/confrimTariners/${id}`)
+    .then(res => setLoader(res.data))
+  },[id,axiosSecure])
   const {
     trainer_photo,
     skills,

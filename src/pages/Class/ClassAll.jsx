@@ -107,7 +107,9 @@ const ClassAll = () => {
           <div key={classTranier._id} className="relative border rounded-lg border-[#5b1ae9]/60 bg-white ">
             <img src={classTranier.photo} alt="" className="h-[300px] w-full"/>
             <h1 className="text-center text-black text-3xl font-semibold my-5">{classTranier.tranier_name}</h1>
+            <Link to={`/classAll/${classTranier._id}`}>
             <button className="bg-[#5b1ae9] w-full py-2 text-2xl font-medium text-white rounded-b-lg">Show details</button>
+            </Link>
         </div>)
         }
       </div>

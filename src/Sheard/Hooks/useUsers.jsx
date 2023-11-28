@@ -5,7 +5,6 @@ import useAuth from "./useAuth";
 const useUsers = () => {
     const axiosSecure = useAxios()
     const {user} = useAuth()
-    console.log(user?.email);
     const { data: usersData=[],isLoading, refetch } = useQuery({
         queryKey: ['users',user?.email],
         queryFn: async() =>{

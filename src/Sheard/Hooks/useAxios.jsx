@@ -6,10 +6,10 @@ const axiosSecure = axios.create({
     withCredentials: true
 })
 const useAxios = () => {
-    // const { logOut } = useAuth() || {}
-    // const navigate = useNavigate()
+  /*   const { logOut } = useAuth() || {}
+    const navigate = useNavigate()
 
-    /* axiosSecure.interceptors.response.use(function (response) {
+ axiosSecure.interceptors.response.use(function (response) {
         return response;
     }, async function (error) {
         if (error.response.status === 401 || error.response.status === 403) {
@@ -18,8 +18,7 @@ const useAxios = () => {
             navigate('/login')
         }
         return Promise.reject(error);
-    }); */
-
+    });  */
     return axiosSecure;
 };
 export default useAxios;

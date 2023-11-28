@@ -22,7 +22,7 @@ const TrainerCart = ({ trainer }) => {
         <div className="flex justify-between items-start">
             
         <div>
-        <h2 className="card-title">{name}</h2>
+        <h1 className="card-title text-xl">Trainer Name :{name}</h1>
         <p>Experience : {experience ? experience : "12"} year</p>
         </div>
         <img
