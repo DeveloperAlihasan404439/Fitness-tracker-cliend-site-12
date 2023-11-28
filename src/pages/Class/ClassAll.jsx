@@ -4,6 +4,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./ClassAll.css";
 import SectionTitle from "../../Sheard/SectionTitle/SectionTitle";
+import useClass from "../../Sheard/Hooks/useClass";
+import { Link } from "react-router-dom";
 const ClassAll = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const saturday=["Yin Yoga Serenity","Suspension Training Core","Circuit Fury","Mind-Body Balance Pilates",]
@@ -13,6 +15,8 @@ const ClassAll = () => {
   const wednesday=["Cardio Kickboxing Fury","Mind-Body Balance Pilates","Aerial Silks Adventure","Stretch & Release Yoga","BollyFit Groove"]
   const thursday=["Sweat & Sculpt Barbell","TRX Total Tone","Interval Training Madness","Balance Board Basics","Mountain Biking Challenge"]
   
+  const {classAll} = useClass()
+  console.log(classAll);
   return (
     <div>
       <Helmet>
@@ -37,7 +41,7 @@ const ClassAll = () => {
         </div>
       </div>
       <SectionTitle heading="Class" title="Trainer Post All Class"/>
-      <div className="w-11/12 mx-auto text-center my-5 md:my-10">
+      <div className="md:w-11/12 mx-auto text-center my-5 md:my-10">
         <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
           <TabList>
             <Tab>Saturday</Tab>
@@ -97,7 +101,17 @@ const ClassAll = () => {
           </TabPanel>
         </Tabs>
       </div>
-    </div>
+      <div className="md:w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6 gap-5">
+        {
+          classAll?.map(classTranier => 
+          <div key={classTranier._id} className="relative border rounded-lg border-[#5b1ae9]/60 bg-white ">
+            <img src={classTranier.photo} alt="" className="h-[300px] w-full"/>
+            <h1 className="text-center text-black text-3xl font-semibold my-5">{classTranier.tranier_name}</h1>
+            <button className="bg-[#5b1ae9] w-full py-2 text-2xl font-medium text-white rounded-b-lg">Show details</button>
+        </div>)
+        }
+      </div>
+      </div>
   );
 };
 

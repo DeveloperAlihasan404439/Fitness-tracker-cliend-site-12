@@ -13,6 +13,7 @@ import Trainer from "../../pages/dashboard/Trainer/Trainer";
 import SingleTrainer from "../../pages/dashboard/Trainer/SingleTrainer";
 import TrainerAll from "../../pages/dashboard/Admin/TrainerAll";
 import ClassAll from "../../pages/Class/ClassAll";
+import AddNewClass from "../../pages/dashboard/Trainer/AddNewClass";
 export const router = createBrowserRouter([
     {
         path: '/',
@@ -75,6 +76,13 @@ export const router = createBrowserRouter([
                 element: <Users/>
             },
             // -----------------------------Admin Dashboard End----------------------
+
+            // -----------------------------Trainer Dashboard End----------------------
+            {
+                path: '/dashboard/addNowClass',
+                element: <AddNewClass/>
+            },
+            // -----------------------------Trainer Dashboard End----------------------
         ]
     }
 ])
