@@ -9,7 +9,7 @@ const usePayment = () => {
     const {data: paymentHistroy = [], isLoading,refetch } = useQuery({
         queryKey: ['payment',user?.email],
         queryFn: async() =>{
-            const res = await axiosSecure.get(`/payment?email=${user?.email}`,{withCredentials: true})
+            const res = await axiosSecure.get(`/payment?email=${user?.email}`)
             const data = res.data;
             return data
         }

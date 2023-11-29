@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 const AddNewClass = () => {
     const axiosSecure = useAxios()
     const {user} = useAuth()
+    const [values, setValues] = useState('');
     const [tariners, setTariners] = useState([])
     useEffect(()=>{
       axiosSecure.get('/confrimTariners')
@@ -19,7 +20,21 @@ const AddNewClass = () => {
     const tariner = tariners?.find(trainer => trainer?.email === user?.email)
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
-    const classInfo ={
+    let items = []
+
+    if(parseInt(data.price) < 100){
+       const class_items = {price:data.price, item: "Sliver"}
+      items.push(class_items)
+    }
+    else if(parseInt(data.price) < 200){
+      const class_items = {price:data.price, item: "Gold"}
+      items.push(class_items)
+    }
+    else{
+      const class_items = {price:data.price, item: "Diamond"}
+      items.push(class_items)
+    }
+     const classInfo ={
         tranier_name: data.tranier_name,
         tranier_email: data.tranier_email,
         photo: data.photo,
@@ -29,7 +44,9 @@ const AddNewClass = () => {
         duration: data.duration,
         deteles: data.deteles,
         class_name: data.class_name,
-        tranier_photo: tariner.trainer_photo
+        tranier_photo: tariner.trainer_photo,
+        items,
+        values
     }
     axiosSecure.post("/class",classInfo)
     .then(res =>{
@@ -45,10 +62,10 @@ const AddNewClass = () => {
               timer: 2000,
             });
         }
-    })
+    }) 
   };
   return (
-    <div className="h-screen flex items-center ">
+    <div className="py-5 ">
       <div className="  w-full md:w-10/12 mx-auto md:shadow-2xl bg-base-100 ">
         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
           <h1 className="text-2xl font-semibold text-center py-5 mt-5">
@@ -67,33 +84,11 @@ const AddNewClass = () => {
             </div>
             <div className="form-control w-full md:w-[50%]">
               <label className="label">
-                <span className="label-text text-xl text-black">Duration</span>
-              </label>
-              <input
-                {...register("duration", { required: true })}
-                placeholder="duration"
-                className="input input-bordered w-full"
-              />
-            </div>
-          </div>
-          <div className="md:flex gap-5 justify-between items-center">
-            <div className="form-control w-full md:w-[50%]">
-              <label className="label">
                 <span className="label-text text-xl text-black">Class Photo</span>
               </label>
               <input
                 {...register("photo", { required: true })}
                 placeholder="photo"
-                className="input input-bordered w-full"
-              />
-            </div>
-            <div className="form-control w-full md:w-[50%]">
-              <label className="label">
-                <span className="label-text text-xl text-black">Equipment Needed</span>
-              </label>
-              <input
-                {...register("euipment", { required: true })}
-                placeholder="euipment"
                 className="input input-bordered w-full"
               />
             </div>
@@ -127,23 +122,29 @@ const AddNewClass = () => {
           <div className="md:flex gap-5 justify-between items-center">
             <div className="form-control w-full md:w-[50%]">
               <label className="label">
-                <span className="label-text text-xl text-black">Location</span>
+                <span className="label-text text-xl text-black">Price</span>
               </label>
               <input
-                {...register("location", { required: true })}
-                placeholder="location"
+                {...register("price", { required: true })}
+                placeholder="price"
                 className="input input-bordered w-full"
               />
             </div>
             <div className="form-control w-full md:w-[50%]">
-              <label className="label">
-                <span className="label-text text-xl text-black">Additional Notes</span>
-              </label>
-              <input
-                {...register("notes", { required: true })}
-                placeholder="notes"
-                className="input input-bordered w-full"
-              />
+            <label className="label">
+                  <span className="label-text">Items</span>
+                </label>
+                <select
+                  onChange={(e)=>setValues(e.target.value)}
+                  name="item"
+                  className="input input-bordered w-full"
+                >
+                  <option>Select Time</option>
+                  <option value="04.00pm-05.00pm">04.00pm-05.00pm</option>
+                  <option value="05.00pm-06.00pm">05.00pm-06.00pm</option>
+                  <option value="06.00pm-07.00pm">06.00pm-07.00pm</option>
+                  <option value="07.00pm-08.00pm">07.00pm-08.00pm</option>
+                </select>
             </div>
           </div>
           <div className="form-control">

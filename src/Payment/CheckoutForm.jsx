@@ -11,16 +11,28 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
+  const classItem= []
+  const classList= []
+  const userInfo= []
+  const trainerInfo= []
   const axiosSecure = useAxios();
-  const { cart,refetch } = useTotleCarts();
+  const { cart, refetch } = useTotleCarts();
+  
+  cart.forEach(paymentuser => {
+    classList.push(paymentuser.class)
+    classItem.push(paymentuser.items)
+    userInfo.push(paymentuser.userInfo)
+    trainerInfo.push(paymentuser.trainerInfo)
+  })
 
   const [clientSecret, setClientSecret] = useState("");
   const [transictionId, setTransictionId] = useState("");
 
-  const totalPrice = cart.reduce(
-    (total, item) => total + parseInt(item.price),
+  const totalPrice = classItem.reduce(
+    (total, item) => total + parseInt(item.priceAmount),
     0
   );
+  console.log(totalPrice)
   useEffect(() => {
     if (totalPrice)
       axiosSecure
@@ -67,66 +79,68 @@ const CheckoutForm = () => {
     } else {
       if (paymentIntent.status === "succeeded") {
         console.log("success", paymentIntent);
-        setTransictionId(paymentIntent.id)
+        setTransictionId(paymentIntent.id);
 
         // new payment histry in the database
         const paymentInfo = {
-            email: user?.email || "anonymous",
-            name: user?.displayName || "anonymous",
-            transictionId: paymentIntent.id,
-            price: totalPrice,
-            date: new Date(),
-            cartId: cart.map(items => items._id),
-            categoryId: cart.map(item => item.categoryId),
-            status: 'panding'
-        }
-        axiosSecure.post('payment', paymentInfo)
-        .then(res => {
-            if(res.data?.resutl?.insertedId){
-                Swal.fire({
-                    position: "top-center",
-                    icon: "success",
-                    title: "Successfull payment",
-                    showConfirmButton: false,
-                    timer: 1500,
-                  });
-                refetch()
-            }
-        })
+          email: user?.email || "anonymous",
+          name: user?.displayName || "anonymous",
+          transictionId: paymentIntent.id,
+          price: totalPrice,
+          date: new Date(),
+          cartId: cart.map((items) => items._id),
+          categoryId: cart.map((item) => item.categoryId),
+          status: "panding",
+        };
+        axiosSecure.post("payment", paymentInfo).then((res) => {
+          if (res.data?.resutl?.insertedId) {
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "Successfull payment",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            refetch();
+          }
+        });
       }
     }
   };
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <CardElement
-          options={{
-            style: {
-              base: {
-                fontSize: "20px",
-                color: "#424770",
-                "::placeholder": {
-                  backgroundColor: "#5b1ae9",
-                  color: "white",
+      <div>hello word</div>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <CardElement
+            options={{
+              style: {
+                base: {
+                  fontSize: "20px",
+                  color: "#424770",
+                  "::placeholder": {
+                    backgroundColor: "#5b1ae9",
+                    color: "white",
+                  },
+                },
+                invalid: {
+                  color: "black",
                 },
               },
-              invalid: {
-                color: "black",
-              },
-            },
-          }}
-        />
-        <button
-          className="bg-[#5b1ae9] px-3 py-2 ms:w-[50px] text-white rounded-md w-1/2 mx-auto flex justify-center mt-5"
-          type="submit"
-          disabled={!stripe || !clientSecret}
-        >
-          Payment
-        </button>
+            }}
+          />
+          <button
+            className="bg-[#5b1ae9] px-3 py-2 ms:w-[50px] text-white rounded-md w-1/2 mx-auto flex justify-center mt-5"
+            type="submit"
+            disabled={!stripe || !clientSecret}
+          >
+            Payment
+          </button>
 
-        <p>{error}</p>
-        {transictionId && <p>Transiction id : ${transictionId}</p>}
-      </form>
+          <p>{error}</p>
+          {transictionId && <p>Transiction id : ${transictionId}</p>}
+        </form>
+      </div>
     </div>
   );
 };

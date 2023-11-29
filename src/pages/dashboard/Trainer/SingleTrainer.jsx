@@ -2,25 +2,16 @@ import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import useAxiosPublick from "../../../Sheard/Hooks/useAxiosPublick";
 import Loading from "../../../Sheard/Loading/Loading";
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
+import Swal from "sweetalert2";
 import useUsers from "../../../Sheard/Hooks/useUsers";
 import useAuth from "../../../Sheard/Hooks/useAuth";
-import Swal from "sweetalert2";
 
 const SingleTrainer = () => {
-  const [price, setPrice] = useState(null);
   const {usersData} = useUsers()
-  const [items, setItems] = useState({})
   const {user} = useAuth()
   const axiosPublick = useAxiosPublick()
+const navigate = useNavigate()
 
-  const hendelProce = (price) => {
-    if (price === null) {
-      setPrice(price);
-    } else if (price) {
-      setPrice(price);
-    }
-  };
   const loader = useLoaderData();
   const {
     trainer_photo,
@@ -40,35 +31,29 @@ const SingleTrainer = () => {
       return data;
     },
   });
-
-  const hendelJoin = () => {
-    const userInfo = usersData.find(users => users.email === user?.email)
-    if(price ===100){
-         setItems( {
-        priceAmount: price,
-        priceitem: "silver"
-      })
-    } 
-    else if(price ===150){
-       setItems( {
-        priceAmount: price,
-        priceitem: "gold"
-      })
-    } 
-    setItems( {
-      priceAmount: price,
-      priceitem: "diamond"
-    })
-    const booking = {
-      userInfo,
-      trainerInfo: loader,
-      class: tranierClass,
-      items
-    }
-    console.log(booking);
-    /* axiosPublick.post('/userBooking/class', booking)
+  const userInformation = usersData.find(userinfo => userinfo.email === user.email)
+  const hendelJoin = (id) => {
+    const bookingClass = tranierClass.find(bookingClass => bookingClass._id === id)
+    const booking={ 
+        values:bookingClass.values,
+        tranier_photo: bookingClass.tranier_photo,
+        tranier_name: bookingClass.tranier_name,
+        tranier_email: bookingClass.tranier_email,
+        photo: bookingClass.photo,
+        items: bookingClass.items,
+        class_name: bookingClass.class_name,
+        deteles: bookingClass.deteles,
+        user_name: userInformation.name,
+        user_age: userInformation.age,
+        user_email: userInformation.email,
+        user_phone: userInformation.phone,
+        user_gender: userInformation.gender,
+        user_location: userInformation.location,
+      }
+    axiosPublick.post('/userBooking/class', booking)
     .then(res =>{
       if(res.data.insertedId){
+        navigate('/dashboard/payment')
         Swal.fire({
           position: "center",
           icon: "success",
@@ -76,10 +61,10 @@ const SingleTrainer = () => {
           showConfirmButton: false,
           background: '#5b1ae9',
           color: '#FDFDFD',
-          timer: 1500
+          timer: 2000
         }); 
       }
-    }) */
+    })
   };
   return (
     <div>
@@ -100,23 +85,6 @@ const SingleTrainer = () => {
                     <button className="btn uppercase">Back the Prv</button>
                   </Link>
                 </div>
-                <div className="absolute -top-10 -right-10">
-                  {price === null ? (
-                  
-                    <button
-                      className="btn uppercase bg-slate-300"
-                      disabled
-                    >
-                      Join Now
-                    </button>
-                  ) : (
-                    <Link to="/dashboard/payment">
-                    <button onClick={hendelJoin} className="btn uppercase">
-                      Join Now
-                    </button>
-                    </Link>
-                  )}
-                </div>
               </div>
               <h1 className="text-center text-xl mt-3 md:text-3xl font-semibold">
                 Name : {name}
@@ -124,55 +92,12 @@ const SingleTrainer = () => {
               <h1 className="text-center text-xl md:text-2xl font-semibold">
                 Email : {email}
               </h1>
-              <div className="flex justify-between items-center mt-5">
                 <div>
                   <h1 className="text-lg md:text-xl">Age : {age}</h1>
                   <h1 className="text-lg md:text-xl">
                     Experience : {experience ? experience : "12"} Year
                   </h1>
                 </div>
-                <div className="flex gap-5">
-                  <div
-                    onClick={() => hendelProce(100)}
-                    className={`${
-                      price === 100 ? "bg-[#ffffff]" : "bg-[#BABABA]"
-                    }  text-center rounded-xl text-black py-2 px-7`}
-                  >
-                    <h1 className="text-xl md:text-2xl uppercase font-bold">
-                      Silver
-                    </h1>
-                    <h1 className="text-lg md:text-xl font-medium">
-                      Price : $100
-                    </h1>
-                  </div>
-                  <div
-                    onClick={() => hendelProce(150)}
-                    className={`${
-                      price === 150 ? "bg-[#ffffff]" : "bg-[#F5C916]"
-                    } text-center rounded-xl text-black py-2 px-7`}
-                  >
-                    <h1 className="text-xl md:text-2xl uppercase font-bold">
-                      Gold
-                    </h1>
-                    <h1 className="text-lg md:text-xl font-medium">
-                      Price : $150
-                    </h1>
-                  </div>
-                  <div
-                    onClick={() => hendelProce(200)}
-                    className={`${
-                      price === 200 ? "bg-[#ffffff]" : "bg-[#b9f2ff] "
-                    } text-center rounded-xl text-black py-2 px-7`}
-                  >
-                    <h1 className="text-xl md:text-2xl uppercase font-bold">
-                      Diamond
-                    </h1>
-                    <h1 className="text-lg md:text-xl font-medium">
-                      Price : $200
-                    </h1>
-                  </div>
-                </div>
-              </div>
               <div className="grid grid-cols-1 md:grid-cols-3 py-5">
                 <div>
                   {skills?.map((skill, i) => (
@@ -207,21 +132,26 @@ const SingleTrainer = () => {
                   <img
                     src={tranier?.photo}
                     alt=""
-                    className="rounded-xl h-[400px]"
+                    className="rounded-t-xl h-[400px] w-full"
                   />
                   <div className="px-5 py-2">
                     <h1 className="text-2xl font-medium py-2 px-2 mt-2 text-black text-center">
-                      Class Name : {tranier?.class_name}
+                      {tranier?.class_name}
                     </h1>
-                    <h1 className="text-lg md:text-xl text-black">
-                      Trainer Name : {tranier?.tranier_name}
+                    <h1 className="text-xl font-medium text-black text-center">
+                     Tiem : {tranier?.values}
                     </h1>
-                    <h1 className="text-lg md:text-xl text-black">
-                      Trainer Email : {tranier?.tranier_email}
-                    </h1>
-                    <h1 className="text-lg md:text-xl text-black">
-                      Duration : {tranier?.duration}
-                    </h1>
+                      {
+                     tranier?.items.map((items, i)=><div key={i} className="flex justify-between px-5 py-2 items-center">
+                      <h1 className={`text-xl font-medium ${items.item==="Sliver"|| items.item ==="Gold"?items.item==="Gold"?"bg-[#F7D000]":"bg-[#5a5a5a]":"bg-[#27c3e6]"} text-white  px-5 py-2 rounded-xl`}>{items.item}</h1>
+                      <h1 className={`text-xl font-medium ${items.item==="Sliver"|| items.item ==="Gold"?items.item==="Gold"?"bg-[#F7D000]":"bg-[#5a5a5a]":"bg-[#27c3e6]"} text-white  px-5 py-2 rounded-xl`}>price ${items.price}</h1>
+                     </div>)
+                      }
+                      <div className="flex justify-center">
+                    <button onClick={()=>hendelJoin(tranier._id)} className="btn uppercase">
+                      Join Now
+                    </button>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -3,6 +3,7 @@ import Banner from "../../Companent/Banner";
 import Featured from "../../Companent/Featured";
 import {Helmet} from "react-helmet";
 import Newsletter from "../../Companent/Newsletter";
+import FeaturedClass from "../../Companent/FeaturedClass";
 const Home = () => {
     return (
         <div>
@@ -13,6 +14,7 @@ const Home = () => {
             <Featured/>
             <About/>
             <Newsletter/>
+            <FeaturedClass/>
         </div>
     );
 };

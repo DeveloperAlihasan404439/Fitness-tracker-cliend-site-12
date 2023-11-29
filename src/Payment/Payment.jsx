@@ -18,7 +18,7 @@ const Payment = () => {
       };
     return (
         <div>
-            <SectionTitle heading='Pay Bile' title="pleach Peamint Bill"/>
+            <SectionTitle heading='Pay Bile' title="palech Peamint Bill"/>
             <div className="w-11/12 mx-auto">
         <Elements stripe={stripePromise} options={options}>
           <CheckoutForm/>

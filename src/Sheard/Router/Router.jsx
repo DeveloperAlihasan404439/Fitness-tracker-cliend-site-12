@@ -20,6 +20,9 @@ import ProfileMember from "../../pages/dashboard/Member/ProfileMember";
 import ProfileMemberEdit from "../../pages/dashboard/Member/ProfileMemberEdit";
 import Payment from "../../Payment/Payment";
 import ActivityLog from "../../pages/dashboard/Member/ActivityLog";
+import ManageSlots from "../../pages/dashboard/Trainer/ManageSlots";
+import RecommendedClass from "../../pages/dashboard/Member/RecommendedClass";
+import ManageMember from "../../pages/dashboard/Trainer/ManageMember";
 
 export const router = createBrowserRouter([
     {
@@ -94,6 +97,14 @@ export const router = createBrowserRouter([
 
             // -----------------------------Trainer Dashboard End----------------------
             {
+                path: '/dashboard/manageslots',
+                element: <ManageSlots/>
+            },
+            {
+                path: '/dashboard/allMember',
+                element: <ManageMember/>
+            },
+            {
                 path: '/dashboard/addNowClass',
                 element: <AddNewClass/>
             },
@@ -111,6 +122,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/profileEdit',
                 element: <ProfileMemberEdit/>
+            },
+            {
+                path: '/dashboard/recommended/class',
+                element: <RecommendedClass/>
             },
             {
                 path: '/dashboard/payment',

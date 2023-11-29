@@ -9,7 +9,7 @@ const useTotleCarts = () => {
     const {data: cart = [], isLoading,refetch } = useQuery({
         queryKey: ['membor',user?.email],
         queryFn: async() =>{
-            const res = await axiosSecure.get(`/membor/payment?email=${user?.email}`)
+            const res = await axiosSecure.get(`/userBooking/class?email=${user?.email}`)
             const data = res.data;
             return data
         }

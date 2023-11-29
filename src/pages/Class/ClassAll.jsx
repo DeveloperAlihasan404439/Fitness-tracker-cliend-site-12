@@ -16,7 +16,6 @@ const ClassAll = () => {
   const thursday=["Sweat & Sculpt Barbell","TRX Total Tone","Interval Training Madness","Balance Board Basics","Mountain Biking Challenge"]
   
   const {classAll} = useClass()
-  console.log(classAll);
   return (
     <div>
       <Helmet>

@@ -92,7 +92,7 @@ const Dashboard = () => {
                       <h1>Manage Slots</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashboard/allTrainers"
+                      to="/dashboard/allMember"
                       className="flex gap-5 items-center text-lg mb-2"
                     >
                       <FaUsers/>
@@ -130,7 +130,7 @@ const Dashboard = () => {
                       <h1>Profile Settings</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashboard/paymentHistroy"
+                      to="/dashboard/recommended/class"
                       className="flex gap-5 items-center text-lg mb-2"
                     >
                       <SiGoogleclassroom/>
@@ -142,9 +142,6 @@ const Dashboard = () => {
                     >
                     <FaHandHoldingDollar/>
                       <h1>Payment</h1>
-                    </NavLink>
-                    <NavLink className="flex gap-5 items-center text-lg mb-2">
-                      <h1>add review</h1>
                     </NavLink>
                   </>
                 )}
