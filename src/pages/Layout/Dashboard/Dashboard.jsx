@@ -76,6 +76,13 @@ const Dashboard = () => {
                       <h1>All Users</h1>
                     </NavLink>
                     <NavLink
+                      to="/dashboard"
+                      className="flex gap-5 items-center text-lg mb-2"
+                    >
+                      <FaShareFromSquare />
+                      <h1>Add new Forum</h1>
+                    </NavLink>
+                    <NavLink
                       to="/dashboard/menageBooking"
                       className="flex gap-5 items-center text-lg mb-2"
                     >

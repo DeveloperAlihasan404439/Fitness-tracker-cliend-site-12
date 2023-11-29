@@ -4,6 +4,7 @@ import Featured from "../../Companent/Featured";
 import {Helmet} from "react-helmet";
 import Newsletter from "../../Companent/Newsletter";
 import FeaturedClass from "../../Companent/FeaturedClass";
+import Teistimonlale from "../../Companent/Teistimonlale";
 const Home = () => {
     return (
         <div>
@@ -15,6 +16,7 @@ const Home = () => {
             <About/>
             <Newsletter/>
             <FeaturedClass/>
+            <Teistimonlale/>
         </div>
     );
 };
