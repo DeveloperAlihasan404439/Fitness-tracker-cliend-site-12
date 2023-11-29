@@ -167,10 +167,10 @@ const TrainerApply = () => {
                   className="input input-bordered w-full"
                 >
                   <option>Select Time</option>
-                  <option value="04.00pm-06.00pm">04.00pm-06.00pm</option>
-                  <option value="05.00pm-07.00pm">05.00pm-07.00pm</option>
-                  <option value="06.00pm-08.00pm">06.00pm-08.00pm</option>
-                  <option value="08.00pm-10.00pm">08.00pm-10.00pm</option>
+                  <option value="04.00pm-05.00pm">04.00pm-05.00pm</option>
+                  <option value="05.00pm-06.00pm">05.00pm-06.00pm</option>
+                  <option value="06.00pm-07.00pm">06.00pm-07.00pm</option>
+                  <option value="07.00pm-08.00pm">07.00pm-08.00pm</option>
                 </select>
               </div>
             </div>

@@ -85,7 +85,7 @@ const Dashboard = () => {
                   </>:<>
                   {/* trainer Dashbord  */}
                     <NavLink
-                      to="/dashboard/subscribers"
+                      to="/dashboard/manageslots"
                       className="flex gap-5 items-center text-lg mb-2"
                     >
                       <SiSubstack/>
@@ -137,10 +137,11 @@ const Dashboard = () => {
                       <h1>Recommended</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashboard/myCrat"
+                      to="/dashboard/payment"
                       className="flex gap-5 items-center text-lg mb-2"
                     >
-                      <h1>my cart</h1>
+                    <FaHandHoldingDollar/>
+                      <h1>Payment</h1>
                     </NavLink>
                     <NavLink className="flex gap-5 items-center text-lg mb-2">
                       <h1>add review</h1>

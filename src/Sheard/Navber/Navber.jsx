@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import { MdMenuBook } from 'react-icons/md';
+import { MdMenuBook } from "react-icons/md";
 
 import logo from "../../assets/img/hot_3.png";
 import {
@@ -9,17 +9,31 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
-import useAuth from '../Hooks/useAuth'
-import './Navber.css'
+import useAuth from "../Hooks/useAuth";
+import "./Navber.css";
+import useAdmin from "../Hooks/useAdmin";
+import useTrainer from "../Hooks/useTrainer";
 const Navber = () => {
-  const {user,logout} = useAuth()
+  const { isAdmin } = useAdmin();
+  const { isTrainer } = useTrainer();
+  const { user, logout } = useAuth();
   const navItems = (
     <>
-      <NavLink to = "/">Home</NavLink>
-      <NavLink to='/gallery'>Gallery</NavLink>
-      <NavLink to = '/tariner'>Trainer</NavLink>
-      <NavLink to='/classAll'>Classes</NavLink>
-      <NavLink to='/dashboard'>Dashboard</NavLink>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/gallery">Gallery</NavLink>
+      <NavLink to="/tariner">Trainer</NavLink>
+      <NavLink to="/classAll">Classes</NavLink>
+      <NavLink
+        to={
+          isAdmin || isTrainer
+            ? isAdmin
+              ? "/dashboard/subscribers"
+              : "/dashboard/manageslots"
+            : "/dashboard/userHome"
+        }
+      >
+        Dashboard
+      </NavLink>
       <NavLink to="/community">Community</NavLink>
     </>
   );
@@ -30,8 +44,8 @@ const Navber = () => {
           <div className="drawer lg:hidden">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
-              <label  htmlFor="my-drawer">
-                  <MdMenuBook className="text-3xl" />
+              <label htmlFor="my-drawer">
+                <MdMenuBook className="text-3xl" />
               </label>
             </div>
             <div className="drawer-side mt-16">
@@ -49,25 +63,25 @@ const Navber = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="flex gap-5 uppercase text-xl font-medium ">
-          {navItems}
+            {navItems}
           </ul>
         </div>
         <div className="navbar-end">
           <Menu>
-            <MenuButton >
-              {
-                user?<img
-                src={user?.photoURL}
-                alt=""
-                className="rounded-[50%] w-[50px] h-[45px] p-2 border-2 border-[#5b1ae9]"
-              />:
-              <img
-                src="https://i.ibb.co/zZx94Sz/user.jpg"
-                alt=""
-                className="rounded-[50%] w-[50px]"
-              />
-              }
-              
+            <MenuButton>
+              {user ? (
+                <img
+                  src={user?.photoURL}
+                  alt=""
+                  className="rounded-[50%] w-[50px] h-[45px] p-2 border-2 border-[#5b1ae9]"
+                />
+              ) : (
+                <img
+                  src="https://i.ibb.co/zZx94Sz/user.jpg"
+                  alt=""
+                  className="rounded-[50%] w-[50px]"
+                />
+              )}
             </MenuButton>
             {user ? (
               <MenuList className=" mr-6">

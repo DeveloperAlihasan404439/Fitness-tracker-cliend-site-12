@@ -18,6 +18,8 @@ import ClassDetels from "../../pages/Class/ClassDetels";
 import Community from "../../pages/Community/Community";
 import ProfileMember from "../../pages/dashboard/Member/ProfileMember";
 import ProfileMemberEdit from "../../pages/dashboard/Member/ProfileMemberEdit";
+import Payment from "../../Payment/Payment";
+import ActivityLog from "../../pages/dashboard/Member/ActivityLog";
 
 export const router = createBrowserRouter([
     {
@@ -43,6 +45,7 @@ export const router = createBrowserRouter([
             {
                 path: '/tarinerApply/:id',
                 element: <SingleTrainer/>,
+                loader: ({params})=>fetch(`http://localhost:5000/tarinerApply/${params.id}`)
             },
             {
                 path: '/community',
@@ -98,12 +101,20 @@ export const router = createBrowserRouter([
             // -----------------------------Trainer Dashboard End----------------------
             // -----------------------------membur Dashboard End----------------------
             {
+                path: '/dashboard/userHome',
+                element: <ActivityLog/>
+            },
+            {
                 path: '/dashboard/profile',
                 element: <ProfileMember/>
             },
             {
                 path: '/dashboard/profileEdit',
                 element: <ProfileMemberEdit/>
+            },
+            {
+                path: '/dashboard/payment',
+                element: <Payment/>,
             },
             // -----------------------------membur Dashboard End----------------------
         ]

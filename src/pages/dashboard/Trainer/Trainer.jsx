@@ -1,15 +1,9 @@
 import { Link } from "react-router-dom";
-import useAxiosPublick from "../../../Sheard/Hooks/useAxiosPublick";
-import { useEffect, useState } from "react";
 import SectionTitle from "../../../Sheard/SectionTitle/SectionTitle";
 import TrainerCart from "./TrainerCart";
+import useTrainerAll from "../../../Sheard/Hooks/useTrainerAll";
 const Trainer = () => {
-    const [allTrainer, setAllTrainer] = useState([])
-    const axiosPublick = useAxiosPublick()
-    useEffect(()=>{
-        axiosPublick.get('/confrimTariners')
-        .then(res =>setAllTrainer(res.data))
-    },[axiosPublick])
+    const  {trainer,isLoading} = useTrainerAll()
     return (
         <>
             <div>
@@ -23,11 +17,16 @@ const Trainer = () => {
                     </div>
                 </div>
                 <SectionTitle heading="All tranier" title="All Traniers Profile "/>
+               
+               {
+                isLoading?<h1>hello word</h1>
+                :
                 <div className="md:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
-                allTrainer?.map(trainer => <TrainerCart key={trainer._id} trainer={trainer}/>)
+                trainer?.map(trainer => <TrainerCart key={trainer._id} trainer={trainer}/>)
                 }
                 </div>
+               }
             </div>
             <div className="flex justify-center my-5">
                 <Link to='/tarinerApply' className="btn">

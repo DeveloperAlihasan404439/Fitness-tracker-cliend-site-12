@@ -12,6 +12,7 @@ const images_hosting_api = `https://api.imgbb.com/1/upload?key=${VITE_IMAGES_HOS
 //  images hostion
 const SignUp = () => {
   const [open, setOpen] = useState(true);
+  const [loader, setLoager] = useState(false);
   const { createUser, logout } = useAuth();
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -21,14 +22,15 @@ const SignUp = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = async (data) => {
     setError("");
+    setLoager(true)
     const fromImages = { image: data.image[0] };
     const res = await axiosPublick.post(images_hosting_api, fromImages, {
       headers: {
         "content-type": "multipart/form-data",
       }
     })
-    const photo = res.data?.data?.display_url;
     if (res.data.success) {
+      setLoager(false)
       const name = data.name;
       const email = data.email;
       const password = data.password;
@@ -36,7 +38,7 @@ const SignUp = () => {
         .then((result) => {
           updateProfile(result.user, {
             displayName: name,
-            photoURL: photo,
+            photoURL: res.data?.data?.display_url,
           }).then(() => {
             const userInfo = {
               name,
