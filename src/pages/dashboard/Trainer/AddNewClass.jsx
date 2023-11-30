@@ -46,7 +46,8 @@ const AddNewClass = () => {
         class_name: data.class_name,
         tranier_photo: tariner.trainer_photo,
         items,
-        values
+        values,
+        applicants_number:0
     }
     axiosSecure.post("/class",classInfo)
     .then(res =>{

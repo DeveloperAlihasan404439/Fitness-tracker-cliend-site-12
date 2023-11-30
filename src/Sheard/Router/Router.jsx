@@ -138,10 +138,10 @@ export const router = createBrowserRouter([
                 path: '/dashboard/recommended/class',
                 element: <RecommendedClass/>
             },
-            {
+            /* {
                 path: '/dashboard/userHome/paymentHistore',
                 element: <PaymentHistore/>,
-            },
+            }, */
             // -----------------------------membur Dashboard End----------------------
         ]
     }

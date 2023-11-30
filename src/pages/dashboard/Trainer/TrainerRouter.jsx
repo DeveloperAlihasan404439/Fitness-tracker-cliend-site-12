@@ -3,7 +3,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../../../Sheard/Hooks/useAuth';
 import useTrainer from '../../../Sheard/Hooks/useTrainer';
 
-const TrainerRouter = () => {
+const TrainerRouter = ({children}) => {
     const {user,loader} = useAuth()
     const {isTrainer, isLoading} = useTrainer()
     const location = useLocation()

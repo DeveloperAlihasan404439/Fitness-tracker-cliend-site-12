@@ -2,7 +2,6 @@ import axios from 'axios'
 import useAuth from './useAuth';
 const axiosSecure = axios.create({
     baseURL: 'https://body-pulse.vercel.app',
-    withCredentials: true
 })
 const useAxios = () => {
     const { logOut } = useAuth() || {}

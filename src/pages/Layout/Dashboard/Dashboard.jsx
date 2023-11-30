@@ -143,13 +143,6 @@ const Dashboard = () => {
                       <SiGoogleclassroom/>
                       <h1>Recommended</h1>
                     </NavLink>
-                    <NavLink
-                      to="/dashboard/userHome/paymentHistore"
-                      className="flex gap-5 items-center text-lg mb-2"
-                    >
-                    <FaHandHoldingDollar/>
-                      <h1>Payment Histore</h1>
-                    </NavLink>
                   </>
                 )}
               </ul>
