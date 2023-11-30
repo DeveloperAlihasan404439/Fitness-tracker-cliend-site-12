@@ -1,20 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
-import useAuth from "../Sheard/Hooks/useAuth";
-import useAxios from "../Sheard/Hooks/useAxios";
+import useAxiosPublick from "../Sheard/Hooks/useAxiosPublick";
 
 
 const useTotleCarts = () => {
-    const axiosSecure = useAxios()
-    const {user} = useAuth()
-    const {data: cart = [], isLoading,refetch } = useQuery({
-        queryKey: ['membor',user?.email],
+    const axiosPublick = useAxiosPublick()
+    const {data: booking = [], isLoading,refetch } = useQuery({
+        queryKey: ['member'],
         queryFn: async() =>{
-            const res = await axiosSecure.get(`/userBooking/class?email=${user?.email}`)
+            const res = await axiosPublick.get(`/userBooking`)
             const data = res.data;
             return data
         }
       })
-      return {cart,isLoading,refetch}
+      return {booking,isLoading,refetch}
 };
 
 export default useTotleCarts;

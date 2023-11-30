@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet} from "react-router-dom";
 import { MdMenuBook,MdOutlinePadding  } from 'react-icons/md';
 import { FaHome,FaUsers } from "react-icons/fa";
 import { GrGallery } from "react-icons/gr";
@@ -144,7 +144,6 @@ const Dashboard = () => {
                       <h1>Recommended</h1>
                     </NavLink>
                     <NavLink
-                      to="/dashboard/payment"
                       className="flex gap-5 items-center text-lg mb-2"
                     >
                     <FaHandHoldingDollar/>

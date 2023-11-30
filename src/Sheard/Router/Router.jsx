@@ -23,11 +23,13 @@ import ActivityLog from "../../pages/dashboard/Member/ActivityLog";
 import ManageSlots from "../../pages/dashboard/Trainer/ManageSlots";
 import RecommendedClass from "../../pages/dashboard/Member/RecommendedClass";
 import ManageMember from "../../pages/dashboard/Trainer/ManageMember";
+import Error from "../Error";
 
 export const router = createBrowserRouter([
     {
         path: '/',
         element: <MainLayout/>,
+        errorElement: <Error/>,
         children: [
             {
                 path: '/',
@@ -75,6 +77,7 @@ export const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <Dashboard/>,
+        errorElement: <Error/>,
         children: [
             // -----------------------------Admin Dashboard Start--------------------
             {
@@ -128,7 +131,7 @@ export const router = createBrowserRouter([
                 element: <RecommendedClass/>
             },
             {
-                path: '/dashboard/payment',
+                path: '/dashboard/payment/:id',
                 element: <Payment/>,
             },
             // -----------------------------membur Dashboard End----------------------

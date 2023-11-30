@@ -2,8 +2,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import useAuth from "../Sheard/Hooks/useAuth";
-import useAxios from "../Sheard/Hooks/useAxios";
 import useTotleCarts from "./useTotleCarts";
+import { useParams } from "react-router-dom";
+import useAxiosPublick from "../Sheard/Hooks/useAxiosPublick";
 
 const CheckoutForm = () => {
   const { user } = useAuth();
@@ -11,36 +12,32 @@ const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
 
-  const classItem= []
-  const classList= []
-  const userInfo= []
-  const trainerInfo= []
-  const axiosSecure = useAxios();
-  const { cart, refetch } = useTotleCarts();
+  const axiosPublick = useAxiosPublick()
+  const { id } = useParams();
+  const { booking } = useTotleCarts();
+  const bookingInfo = booking.find((bookingInfo) => bookingInfo._id === id);
+
   
-  cart.forEach(paymentuser => {
-    classList.push(paymentuser.class)
-    classItem.push(paymentuser.items)
-    userInfo.push(paymentuser.userInfo)
-    trainerInfo.push(paymentuser.trainerInfo)
-  })
 
   const [clientSecret, setClientSecret] = useState("");
   const [transictionId, setTransictionId] = useState("");
 
-  const totalPrice = classItem.reduce(
-    (total, item) => total + parseInt(item.priceAmount),
+  
+   
+  const totalPrice = bookingInfo?.items?.reduce(
+    (total, item) => total + parseInt(item.price),
     0
   );
-  console.log(totalPrice)
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+ 
   useEffect(() => {
     if (totalPrice)
-      axiosSecure
+    axiosPublick
         .post("/create-payment-intent", { price: totalPrice })
         .then((res) => {
           setClientSecret(res.data.clientSecret);
         });
-  }, [axiosSecure, totalPrice]);
+  }, [axiosPublick, totalPrice]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -79,29 +76,29 @@ const CheckoutForm = () => {
     } else {
       if (paymentIntent.status === "succeeded") {
         console.log("success", paymentIntent);
-        setTransictionId(paymentIntent.id);
+        setTransictionId(paymentIntent.id)
 
         // new payment histry in the database
         const paymentInfo = {
-          email: user?.email || "anonymous",
-          name: user?.displayName || "anonymous",
-          transictionId: paymentIntent.id,
+          user_name: bookingInfo.user_name,
+          user_email: bookingInfo.user_email,
+          transictionId: transictionId,
           price: totalPrice,
-          date: new Date(),
-          cartId: cart.map((items) => items._id),
-          categoryId: cart.map((item) => item.categoryId),
-          status: "panding",
+          tranier_name: bookingInfo.tranier_name,
+          tranier_email: bookingInfo.tranier_email,
+          date: new Date().toLocaleDateString(undefined, options),
         };
-        axiosSecure.post("payment", paymentInfo).then((res) => {
-          if (res.data?.resutl?.insertedId) {
+        axiosPublick.post("/payment/data", paymentInfo).then((res) => {
+          if (res.data?.insertedId) {
             Swal.fire({
               position: "top-center",
               icon: "success",
               title: "Successfull payment",
               showConfirmButton: false,
+              backgroundColor: 'black',
+              color: 'white',
               timer: 1500,
             });
-            refetch();
           }
         });
       }
@@ -109,39 +106,35 @@ const CheckoutForm = () => {
   };
   return (
     <div>
-      <div>hello word</div>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <CardElement
-            options={{
-              style: {
-                base: {
-                  fontSize: "20px",
-                  color: "#424770",
-                  "::placeholder": {
-                    backgroundColor: "#5b1ae9",
-                    color: "white",
-                  },
-                },
-                invalid: {
-                  color: "black",
-                },
-              },
-            }}
-          />
-          <button
-            className="bg-[#5b1ae9] px-3 py-2 ms:w-[50px] text-white rounded-md w-1/2 mx-auto flex justify-center mt-5"
-            type="submit"
-            disabled={!stripe || !clientSecret}
-          >
-            Payment
-          </button>
+            <form onSubmit={handleSubmit}>
+                <CardElement
 
-          <p>{error}</p>
-          {transictionId && <p>Transiction id : ${transictionId}</p>}
-        </form>
-      </div>
-    </div>
+                    options={{
+                        style: {
+                            base: {
+                                fontSize: '20px',
+                                color: '#424770',
+                                '::placeholder': {
+
+                                    backgroundColor: '#0060efb7',
+                                    color: 'white',
+                                },
+                            },
+                            invalid: {
+                                color: 'black',
+                            },
+                        },
+                    }}
+                />
+
+                <button className="btn btn-primary ms:w-[50px] text-white rounded-md w-1/2 mx-auto flex justify-center mt-5" disabled={!stripe || !clientSecret}>Confirm Payment</button>
+
+                <p className="text-black text-center mt-3 font-semibold">{error}</p>
+                {/* {
+                    transactionId && <p className="text-[#488DF4] text-center mt-3 font-semibold">Your Transaction Id: <span className="text-black">{transactionId}</span> </p>
+                } */}
+            </form>
+        </div>
   );
 };
 

@@ -1,31 +1,24 @@
-
-import SectionTitle from '../Sheard/SectionTitle/SectionTitle';
-
 import { loadStripe } from "@stripe/stripe-js";
-import {
-  Elements,
-} from "@stripe/react-stripe-js";
-import CheckoutForm from './CheckoutForm';
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
+
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_KP);
 const Payment = () => {
-    const options = {
-        mode: 'payment',
-        amount: 1099,
-        currency: 'usd',
-        appearance: {
-          /*...*/
-        },
-      };
+
     return (
-        <div>
-            <SectionTitle heading='Pay Bile' title="palech Peamint Bill"/>
-            <div className="w-11/12 mx-auto">
-        <Elements stripe={stripePromise} options={options}>
-          <CheckoutForm/>
-        </Elements>
+      <div className="bg-white md:p-10">
+
+      <div>
+          <h2 className="text-2xl font-bold text-center my-5">Please Complete Your Payment!</h2>
       </div>
-        </div>
-    );
+
+      <div className="border border-gray-800 md:p-5">
+          <Elements stripe={stripePromise}>
+              <CheckoutForm></CheckoutForm>
+          </Elements>
+      </div>
+  </div>
+);
 };
 
 export default Payment;

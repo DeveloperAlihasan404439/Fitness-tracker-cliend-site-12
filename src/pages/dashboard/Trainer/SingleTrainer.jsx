@@ -10,8 +10,7 @@ const SingleTrainer = () => {
   const {usersData} = useUsers()
   const {user} = useAuth()
   const axiosPublick = useAxiosPublick()
-const navigate = useNavigate()
-
+  const navigaate = useNavigate()
   const loader = useLoaderData();
   const {
     trainer_photo,
@@ -34,7 +33,8 @@ const navigate = useNavigate()
   const userInformation = usersData.find(userinfo => userinfo.email === user.email)
   const hendelJoin = (id) => {
     const bookingClass = tranierClass.find(bookingClass => bookingClass._id === id)
-    const booking={ 
+    const booking={
+        _id: id,
         values:bookingClass.values,
         tranier_photo: bookingClass.tranier_photo,
         tranier_name: bookingClass.tranier_name,
@@ -53,7 +53,7 @@ const navigate = useNavigate()
     axiosPublick.post('/userBooking/class', booking)
     .then(res =>{
       if(res.data.insertedId){
-        navigate('/dashboard/payment')
+        navigaate(`/dashboard/payment/${id}`)
         Swal.fire({
           position: "center",
           icon: "success",
