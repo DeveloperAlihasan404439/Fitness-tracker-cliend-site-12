@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import SectionTitle from "../../../Sheard/SectionTitle/SectionTitle";
 import TrainerCart from "./TrainerCart";
 import useTrainerAll from "../../../Sheard/Hooks/useTrainerAll";
+import Loading from "../../../Sheard/Loading/Loading";
 const Trainer = () => {
     const  {trainer,isLoading} = useTrainerAll()
     return (
@@ -19,7 +20,7 @@ const Trainer = () => {
                 <SectionTitle heading="All tranier" title="All Traniers Profile "/>
                
                {
-                isLoading?<h1>hello word</h1>
+                isLoading?<Loading/>
                 :
                 <div className="md:w-10/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 {

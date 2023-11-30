@@ -70,7 +70,7 @@ const Community = () => {
                   <p className="text-sm">{comm.deteles}</p>
 
                   <div className=" flex items-center justify-end gap-5 text-3xl mt-5 text-right">
-                    <button>
+                    <button onClick={()=>hendelUpdated(comm._id)}>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 512 512"

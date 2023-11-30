@@ -10,7 +10,7 @@ const useGallery = () => {
     const fetchData = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/gallery?offset=${
+          `https://body-pulse.vercel.app/gallery?offset=${
             (page - 1) * itemsPerPage
           }&limit=${itemsPerPage}`
         );

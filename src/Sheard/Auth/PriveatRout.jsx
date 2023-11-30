@@ -1,5 +1,6 @@
 import { Navigate, useLocation } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
+import Loading from "../Loading/Loading";
 const PriveatRout = ({children}) => {
     const {user,loader} = useAuth()
     const location = useLocation()
@@ -7,9 +8,7 @@ const PriveatRout = ({children}) => {
         return children
     }
     if(loader){
-        return <div className="w-full h-screen flex justify-center items-center">
-        <span className="loading w-[500px] loading-infinity bg-gradient-to-r from-[#f7be02] to-[#f81808]"></span>
-        </div>
+        return <Loading/>
 
     }
     return <Navigate state={location.pathname} to='/login'/>;

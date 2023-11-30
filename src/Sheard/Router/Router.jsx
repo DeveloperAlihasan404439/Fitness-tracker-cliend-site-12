@@ -25,6 +25,9 @@ import ManageMember from "../../pages/dashboard/Trainer/ManageMember";
 import Error from "../Error";
 import PaymentHistore from "../../pages/dashboard/Member/PaymentHistore";
 import Balance from "../../pages/dashboard/Admin/Balance";
+import PriveatRout from "../Auth/PriveatRout";
+import AdminRout from "../../pages/dashboard/Admin/AdminRout";
+import TrainerRouter from "../../pages/dashboard/Trainer/TrainerRouter";
 
 export const router = createBrowserRouter([
     {
@@ -46,12 +49,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/tarinerApply',
-                element: <TrainerApply/>
+                element: <PriveatRout><TrainerApply/></PriveatRout>
             },
             {
                 path: '/tarinerApply/:id',
-                element: <SingleTrainer/>,
-                loader: ({params})=>fetch(`http://localhost:5000/tarinerApply/${params.id}`)
+                element: <PriveatRout><SingleTrainer/></PriveatRout>,
+                loader: ({params})=>fetch(`https://body-pulse.vercel.app/tarinerApply/${params.id}`)
             },
             {
                 path: '/community',
@@ -83,38 +86,38 @@ export const router = createBrowserRouter([
             // -----------------------------Admin Dashboard Start--------------------
             {
                 path: '/dashboard/subscribers',
-                element: <AllSubscribers/>,
+                element: <AdminRout><AllSubscribers/></AdminRout>,
             },
             {
                 path: "/dashboard/allTrainers",
-                element: <TrainerAll/>,
+                element: <AdminRout><TrainerAll/></AdminRout>,
             },
             {
                 path: '/dashboard/appliedTrainer',
-                element: <AppliedTrainer/>,
+                element: <AdminRout><AppliedTrainer/></AdminRout>,
             },
             {
                 path: '/dashboard/allusers',
-                element: <Users/>
+                element: <AppliedTrainer><Users/></AppliedTrainer>
             },
             {
                 path: '/dashboard/menageBalench',
-                element: <Balance/>
+                element: <AppliedTrainer><Balance/></AppliedTrainer>
             },
             // -----------------------------Admin Dashboard End----------------------
 
             // -----------------------------Trainer Dashboard End----------------------
             {
                 path: '/dashboard/manageslots',
-                element: <ManageSlots/>
+                element: <TrainerRouter><ManageSlots/></TrainerRouter>
             },
             {
                 path: '/dashboard/allMember',
-                element: <ManageMember/>
+                element: <TrainerRouter><ManageMember/></TrainerRouter>
             },
             {
                 path: '/dashboard/addNowClass',
-                element: <AddNewClass/>
+                element: <TrainerRouter><AddNewClass/></TrainerRouter>
             },
             
             // -----------------------------Trainer Dashboard End----------------------
