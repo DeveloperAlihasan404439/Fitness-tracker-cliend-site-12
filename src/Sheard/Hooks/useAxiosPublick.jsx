@@ -1,11 +1,12 @@
-import axios from 'axios'
+import axios from "axios";
 const axiosPublick = axios.create({
-    baseURL: 'http://localhost:5000',
-    // withCredentials: true
-})
+  baseURL: "http://localhost:5000",
+  // baseURL: "https://body-pulse.vercel.app",
+  // withCredentials: true
+});
 
 const useAxiosPublick = () => {
-    return axiosPublick
+  return axiosPublick;
 };
 
 export default useAxiosPublick;

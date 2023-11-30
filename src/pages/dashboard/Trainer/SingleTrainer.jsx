@@ -34,7 +34,7 @@ const SingleTrainer = () => {
   const hendelJoin = (id) => {
     const bookingClass = tranierClass.find(bookingClass => bookingClass._id === id)
     const booking={
-        _id: id,
+        id: id,
         values:bookingClass.values,
         tranier_photo: bookingClass.tranier_photo,
         tranier_name: bookingClass.tranier_name,

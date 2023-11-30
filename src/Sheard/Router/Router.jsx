@@ -18,12 +18,13 @@ import ClassDetels from "../../pages/Class/ClassDetels";
 import Community from "../../pages/Community/Community";
 import ProfileMember from "../../pages/dashboard/Member/ProfileMember";
 import ProfileMemberEdit from "../../pages/dashboard/Member/ProfileMemberEdit";
-import Payment from "../../Payment/Payment";
 import ActivityLog from "../../pages/dashboard/Member/ActivityLog";
 import ManageSlots from "../../pages/dashboard/Trainer/ManageSlots";
 import RecommendedClass from "../../pages/dashboard/Member/RecommendedClass";
 import ManageMember from "../../pages/dashboard/Trainer/ManageMember";
 import Error from "../Error";
+import PaymentHistore from "../../pages/dashboard/Member/PaymentHistore";
+import Balance from "../../pages/dashboard/Admin/Balance";
 
 export const router = createBrowserRouter([
     {
@@ -77,7 +78,7 @@ export const router = createBrowserRouter([
     {
         path: '/dashboard',
         element: <Dashboard/>,
-        errorElement: <Error/>,
+        // errorElement: <Error/>,
         children: [
             // -----------------------------Admin Dashboard Start--------------------
             {
@@ -95,6 +96,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/allusers',
                 element: <Users/>
+            },
+            {
+                path: '/dashboard/menageBalench',
+                element: <Balance/>
             },
             // -----------------------------Admin Dashboard End----------------------
 
@@ -131,8 +136,8 @@ export const router = createBrowserRouter([
                 element: <RecommendedClass/>
             },
             {
-                path: '/dashboard/payment/:id',
-                element: <Payment/>,
+                path: '/dashboard/userHome/paymentHistore',
+                element: <PaymentHistore/>,
             },
             // -----------------------------membur Dashboard End----------------------
         ]
