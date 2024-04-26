@@ -1,115 +1,64 @@
-import { Link, NavLink } from "react-router-dom";
-import { MdMenuBook } from "react-icons/md";
-
-import logo from "../../assets/img/hot_3.png";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-} from "@chakra-ui/react";
-import useAuth from "../Hooks/useAuth";
+import "remixicon/fonts/remixicon.css";
 import "./Navber.css";
-import useAdmin from "../Hooks/useAdmin";
-import useTrainer from "../Hooks/useTrainer";
-const Navber = () => {
-  const { isAdmin } = useAdmin();
-  const { isTrainer } = useTrainer();
-  const { user, logout } = useAuth();
-  const navItems = (
-    <>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/gallery">Gallery</NavLink>
-      <NavLink to="/tariner">Trainer</NavLink>
-      <NavLink to="/classAll">Classes</NavLink>
-      <NavLink
-        to={
-          isAdmin || isTrainer
-            ? isAdmin
-              ? "/dashboard/subscribers"
-              : "/dashboard/manageslots"
-            : "/dashboard/userHome"
-        }
-      >
-        Dashboard
-      </NavLink>
-      <NavLink to="/community">Community</NavLink>
-    </>
-  );
+import { useEffect, useState } from "react";
+function Navber() {
+  const [scrolling, setScrolling] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const handleScroll = () => {
+    if (window.scrollY > 50) {
+      setScrolling(true);
+    } else {
+      setScrolling(false);
+    }
+  };
   return (
-    <div className="bg-[#F7F7F7] text-black sticky top-0 left-0 z-30 w-full">
-      <div className="navbar w-11/12 mx-auto">
-        <div className="w-[80%] md:w-[70%] flex md:gap-4 justify-between md:justify-start ">
-          <div className="drawer lg:hidden">
-            <input id="my-drawer" type="checkbox" className="drawer-toggle" />
-            <div className="drawer-content">
-              <label htmlFor="my-drawer">
-                <MdMenuBook className="text-3xl" />
-              </label>
-            </div>
-            <div className="drawer-side mt-16">
-              <label
-                htmlFor="my-drawer"
-                aria-label="close sidebar"
-                className="drawer-overlay"
-              ></label>
-              <ul className="menu pl-8 p-4 w-[70%] min-h-full text-lg md:text-xl bg-[#112e45] text-white">
-                {navItems}
-              </ul>
-            </div>
+    <div className="header">
+      <nav className={`${scrolling?"nav-container scrolling " :"nav-container rounded-b-md"} `}>
+        <input type="checkbox" name="" id="check" />
+        <div className="logo-container">Fitness tracker</div>
+        <div className="nav-btn">
+          <div className="nav-links">
+            <ul>
+              <li className="nav-link" style={{ "--i": " .6s" }}>
+                <a href="#">Home</a>
+              </li>
+              <li className="nav-link" style={{ "--i": " .85s" }}>
+                <a href="#">Gallery</a>
+              </li>
+              <li className="nav-link" style={{ "--i": " 1.1s" }}>
+                <a href="#">Trainer</a>
+              </li>
+              <li className="nav-link" style={{ "--i": "1.40s" }}>
+                <a href="#">Classes</a>
+              </li>
+              <li className="nav-link" style={{ "--i": "1.88s" }}>
+                <a href="#">Dashboard</a>
+              </li>
+              <li className="nav-link" style={{ "--i": " 2.2s" }}>
+                <a href="#">Community</a>
+              </li>
+            </ul>
           </div>
-          <img src={logo} alt="" className="w-[100px] lg:w-[150px]" />
+          <div className="log-sign" style={{ "--i": "3.27s" }}>
+            <button className="btns transparents">Log in</button>
+            <button className="btns solid">Sign up</button>
+          </div>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="flex gap-5 uppercase text-xl font-medium ">
-            {navItems}
-          </ul>
+        <div className="hamburger-menu-container">
+          <div className="hamburger-menu">
+            <div></div>
+          </div>
         </div>
-        <div className="navbar-end">
-          <Menu>
-            <MenuButton>
-              {user ? (
-                <img
-                  src={user?.photoURL}
-                  alt=""
-                  className="rounded-[50%] w-[50px] h-[45px] p-2 border-2 border-[#5b1ae9]"
-                />
-              ) : (
-                <img
-                  src="https://i.ibb.co/zZx94Sz/user.jpg"
-                  alt=""
-                  className="rounded-[50%] w-[50px]"
-                />
-              )}
-            </MenuButton>
-            {user ? (
-              <MenuList className=" mr-6">
-                <div className=" w-full bg-[#112e45] text-white p-3 rounded-b-lg">
-                  <MenuItem>{user?.displayName}</MenuItem>
-                  <MenuItem>{user?.email}</MenuItem>
-                  <MenuDivider className="my-2" />
-                  <MenuItem onClick={logout}>Log Out</MenuItem>
-                </div>
-              </MenuList>
-            ) : (
-              <MenuList className="mr-8">
-                <div className=" w-[200px] bg-[#112e45] text-white p-3 rounded-b-lg">
-                  <MenuDivider className="my-2" />
-                  <MenuItem>
-                    <Link to="/signup">Sing Up</Link>
-                  </MenuItem>
-                  <MenuItem>
-                    <Link to="/login">Login</Link>
-                  </MenuItem>
-                </div>
-              </MenuList>
-            )}
-          </Menu>
-        </div>
-      </div>
+      </nav>
     </div>
   );
-};
+}
 
 export default Navber;

@@ -1,118 +1,319 @@
 import { useState } from "react";
-import { Helmet } from "react-helmet";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
 import "./ClassAll.css";
-import SectionTitle from "../../Sheard/SectionTitle/SectionTitle";
-import useClass from "../../Sheard/Hooks/useClass";
 import { Link } from "react-router-dom";
 const ClassAll = () => {
-  const [tabIndex, setTabIndex] = useState(0);
-  const saturday=["Yin Yoga Serenity","Suspension Training Core","Circuit Fury","Mind-Body Balance Pilates",]
-   const sunday= ["Suspension Training Core","Tai Chi Harmony","Boxing Basics","Kettlebell Fusion","Mindful Stretch & Relax"]
- const monday=["Aqua Aerobics Splash","Barre Burnout","Yin Yoga Serenity","Salsa Sweat Session","TRX Total Tone"]
-  const tuesday=["Functional Fitness Flow","Circuit Fury","Meditative Hike","Parkour Prep","Cardio Kickboxing Fury"]
-  const wednesday=["Cardio Kickboxing Fury","Mind-Body Balance Pilates","Aerial Silks Adventure","Stretch & Release Yoga","BollyFit Groove"]
-  const thursday=["Sweat & Sculpt Barbell","TRX Total Tone","Interval Training Madness","Balance Board Basics","Mountain Biking Challenge"]
-  
-  const {classAll} = useClass()
+  const [tabIndex, setTabIndex] = useState("All Events");
+  const tabsList = [
+    {
+      title: "All Events",
+      id: 1,
+    },
+    {
+      title: "Hatha Yoga",
+      id: 2,
+    },
+    {
+      title: "Yoga Dance",
+      id: 3,
+    },
+    {
+      title: "Ashtanga Yoga",
+      id: 4,
+    },
+    {
+      title: "Kundalini Yoga",
+      id: 5,
+    },
+    {
+      title: "Morning Flow",
+      id: 6,
+    },
+  ];
+  const tabtext = [
+    {
+      id: 1,
+      title: 'Morning Flow',
+      discription:"Advanced Sequence",
+      time: '09.00 - 10.00',
+      link: 'Lily Carter',
+      hovertext: 'Morning relaxation and stretching',
+      bgColor: '#73C6CD',
+      timeDay: '09:00'
+
+    },
+    {
+      id: 2,
+      title: 'Kundalini Yoga',
+      discription:"Basic Kundalini",
+      time: '09.00 - 10.00',
+      link: 'Grace Dean',
+      hovertext: 'Kundalini workflow for beginners',
+      bgColor: '#E8BC6F',
+      timeDay: '09:00'
+    },
+    {
+      id: 3,
+      title: 'Morning Flow',
+      discription:"Advanced Sequence",
+      time: '09.00 - 10.00',
+      link: 'Lily Carter',
+      hovertext: 'Morning relaxation and stretching',
+      bgColor: '#73C6CD',
+      timeDay: '09:00'
+
+    },
+    {
+      id: 4,
+      title: 'Kundalini Yoga',
+      discription:"Basic Kundalini",
+      time: '09.00 - 10.00',
+      link: 'Grace Dean',
+      hovertext: 'Kundalini workflow for beginners',
+      bgColor: '#E8BC6F',
+      timeDay: '09:00'
+    },
+    {
+      id: 5,
+      title: 'Morning Flow',
+      discription:"Advanced Sequence",
+      time: '09.00 - 10.00',
+      link: 'Lily Carter',
+      hovertext: 'Morning relaxation and stretching',
+      bgColor: '#73C6CD',
+      timeDay: '09:00'
+
+    },
+    {
+      id: 6,
+      title: 'Kundalini Yoga',
+      discription:"Basic Kundalini",
+      time: '09.00 - 10.00',
+      link: 'Grace Dean',
+      hovertext: 'Kundalini workflow for beginners',
+      bgColor: '#E8BC6F',
+      timeDay: '09:00'
+    },
+    {id: 7,
+      title: 'Morning Flow',
+      discription:"Advanced Sequence",
+      time: '09.00 - 10.00',
+      link: 'Lily Carter',
+      hovertext: 'Morning relaxation and stretching',
+      bgColor: '#73C6CD',
+      timeDay: '09:00'
+    },
+    {
+      id: 8,
+      title: 'Ashtanga Yoga',
+      discription:"Weight Loss",
+      time: '10.00 - 11.00',
+      link: 'Sophia Keat',
+      hovertext: 'Cardio Workflow for weight loss',
+      bgColor: '#CD7399',
+      timeDay: '10:00'
+    },
+    {
+      id: 9,
+      title: '',
+      discription:"",
+      time: '',
+      link: '',
+      hovertext: '',
+      bgColor: '',
+      timeDay: ''
+    },
+    {
+      id: 10,
+      title: 'Ashtanga Yoga',
+      discription:"Weight Loss",
+      time: '10.00 - 11.00',
+      link: 'Sophia Keat',
+      hovertext: 'Cardio Workflow for weight loss',
+      bgColor: '#CD7399',
+      timeDay: '10:00'
+    },
+    {
+      id: 11,
+      title: '',
+      discription:"",
+      time: '',
+      link: '',
+      hovertext: '',
+      bgColor: '',
+      timeDay: ''
+    },
+    {
+      id: 12,
+      title: 'Ashtanga Yoga',
+      discription:"Weight Loss",
+      time: '10.00 - 11.00',
+      link: 'Sophia Keat',
+      hovertext: 'Cardio Workflow for weight loss',
+      bgColor: '#CD7399',
+      timeDay: '10:00'
+    },
+    {
+      id: 13,
+      title: '',
+      discription:"",
+      time: '',
+      link: '',
+      hovertext: '',
+      bgColor: '',
+      timeDay: ''
+    },
+    {
+      id: 14,
+      title: 'Kundalini Yoga',
+      discription:"Basic Kundalini",
+      time: '11.00 - 12.00',
+      link: 'Grace Dean',
+      hovertext: 'Grace Dean',
+      bgColor: '#CD7399',
+      timeDay: '11:00'
+    },
+    {
+      id: 15,
+      title: 'Ashtanga Yoga',
+      discription:"Weight Loss",
+      time: '11.00 - 12.00',
+      link: 'Sophia Keat',
+      hovertext: 'Cardio Workflow for weight loss',
+      bgColor: '#E8BC6F',
+      timeDay: '11:00'
+    },
+    {
+      id: 16,
+      title: 'Yoga Dance',
+      discription:"Cardio Fit",
+      time: '11.00 - 12.00',
+      link: 'Daniel Brooks',
+      hovertext: 'Yoga Sequence with dancing moves',
+      bgColor: '#62AED6',
+      timeDay: '11:00'
+    },
+    {
+      id: 17,
+      title: '',
+      discription:"",
+      time: '',
+      link: '',
+      hovertext: '',
+      bgColor: '',
+      timeDay: '11:00'
+    },
+    {
+      id: 18,
+      title: 'Yoga Dance',
+      discription:"Cardio Fit",
+      time: '11.00 - 12.00',
+      link: 'Daniel Brooks',
+      hovertext: 'Yoga Sequence with dancing moves',
+      bgColor: '#62AED6',
+      timeDay: '11:00'
+    },
+    {
+      id: 19,
+      title: '',
+      discription:"",
+      time: '',
+      link: '',
+      hovertext: '',
+      bgColor: '',
+      timeDay: '11:00'
+    },
+    {
+      id: 20,
+      title: 'Yoga Dance',
+      discription:"Cardio Fit",
+      time: '11.00 - 12.00',
+      link: 'Daniel Brooks',
+      hovertext: 'Yoga Sequence with dancing moves',
+      bgColor: '#62AED6',
+      timeDay: '11:00'
+    },
+    {
+      id: 21,
+      title: 'Ashtanga Yoga',
+      discription:"Weight Loss",
+      time: '12.00 - 13.00',
+      link: 'Sophia Keat',
+      hovertext: 'Cardio Workflow for weight loss',
+      bgColor: '#E8BC6F',
+      timeDay: '12:00'
+    },
+  ]
   return (
-    <div>
-      <Helmet>
-        <title>Body Pulse | Class</title>
-      </Helmet>
-      <div className="relative">
-        <img
-          src="https://images.unsplash.com/photo-1519505907962-0a6cb0167c73?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTU3fHxmaXRuZXNzfGVufDB8fDB8fHww"
-          alt=""
-          className="w-full md:h-[600px]  object-center"
-        />
-        <div className="absolute top-0 w-full h-full flex justify-center items-center">
-          <div className="w-full md:w-[70%] mx-auto border border-white/20 rounded-lg md:py-10 bg-black/70">
-            <h1 className="text-center text-white  text-xl md:text-3xl font-semibold">
-            Unlock Your Potential with Fitness Tracker Classes
-            </h1>
-            <p className="text-center md:w-10/12 mx-auto text-lg md:text-xl mt-3 text-white">
-              {" "}
-              Unleash your best self through our Fitness Tracker Classes. Personalized guidance, real-time progress tracking, and expert support for a journey to peak fitness
-            </p>
-          </div>
+    <div className="w-11/12 mx-auto mt-10">
+      <h2 className="text-xl md:text-3xl font-bold text-center py-5 pb-10">
+        Classes Timetable
+      </h2>
+      <div className="tabs_container">
+        <div className="tabs_box flex flex-wrap">
+          {tabsList.map((tab) => (
+            <div key={tab.id} className="relative">
+              <button
+                onClick={() => setTabIndex(tab.title)}
+                className={`${
+                  tabIndex === tab.title ? "tab_button active" : "tab_button"
+                }`}
+              >
+                {tab.title}
+              </button>
+              {tabIndex === tab.title && (
+                <div className="absolute -bottom-[3px]  w-full h-1 bg-[#25BFBF] rounded-lg transition-all delay-700"></div>
+              )}
+            </div>
+          ))}
+        </div>
+        <div className="tabs_contant">
+          {tabsList.map((tab) => (
+            <div
+              key={tab.id}
+              className={`${
+                tabIndex === tab.title ? "contant active" : "contant"
+              }`}
+            >
+              <div className="day-content">
+                <div className="w-full flex justify-between">
+                  <span className="day-text "></span>
+                  <span className="day-text ">Monday</span>
+                  <span className="day-text ">Tuesday</span>
+                  <span className="day-text ">Wednesday</span>
+                  <span className="day-text ">Thursday</span>
+                  <span className="day-text ">Friday</span>
+                  <span className="day-text ">Saturday</span>
+                  <span className="day-text ">Sunday</span>
+                </div>
+                <div className="mt-4 w-full flex justify-between bg-white">
+                  <div className ="day-discription">
+                  <span className=" ">helkdgf</span>
+                  </div>
+                  <div className ="day-discription">
+                  <span className=" ">dgdsg</span>
+                  </div>
+                  <div className ="day-discription">
+                  <span className=" "></span>
+                  </div>
+                  <div className ="day-discription">
+                  <span className=" "></span>
+                  </div>
+                  <div className ="day-discription">
+                  <span className=" "></span>
+                  </div>
+                  <div className ="day-discription">
+                  <span className=" "></span>
+                  </div>
+                  <div className ="day-discription">
+                  <span className=" "></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
-      <SectionTitle heading="Class" title="Trainer Post All Class"/>
-      <div className="md:w-11/12 mx-auto text-center my-5 md:my-10">
-        <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-          <TabList>
-            <Tab>Saturday</Tab>
-            <Tab>Sunday</Tab>
-            <Tab>Monday</Tab>
-            <Tab>Tuesday</Tab>
-            <Tab>Wednesday</Tab>
-            <Tab>Thursday</Tab>
-            <Tab>Friday</Tab>
-          </TabList>
-          <TabPanel>
-            <div className="md:w-9/12 mx-auto flex gap-5 justify-center flex-wrap p-10 border rounded-xl bg-[#5b1ae9]/70 ">
-                {
-                    saturday?.map((day,i)=><h1 key={i} className="py-2 px-4 text-xl font-medium text-black rounded-lg bg-white">{day}</h1>)
-                }
-            </div>
-          </TabPanel>
-          <TabPanel>
-             <div className="md:w-9/12 mx-auto flex gap-5 justify-center flex-wrap p-10 border rounded-xl bg-[#5b1ae9]/70 ">
-                {
-                    sunday?.map((day,i)=><h1 key={i} className="py-2 px-4 text-xl font-medium text-black rounded-lg bg-white">{day}</h1>)
-                }
-            </div>
-          </TabPanel>
-          <TabPanel>
-             <div className="md:w-9/12 mx-auto flex gap-5 justify-center flex-wrap p-10 border rounded-xl bg-[#5b1ae9]/70 ">
-                {
-                    monday?.map((day,i)=><h1 key={i} className="py-2 px-4 text-xl font-medium text-black rounded-lg bg-white">{day}</h1>)
-                }
-            </div>
-          </TabPanel>
-          <TabPanel>
-             <div className="md:w-9/12 mx-auto flex gap-5 justify-center flex-wrap p-10 border rounded-xl bg-[#5b1ae9]/70 ">
-                {
-                    tuesday?.map((day,i)=><h1 key={i} className="py-2 px-4 text-xl font-medium text-black rounded-lg bg-white">{day}</h1>)
-                }
-            </div>
-          </TabPanel>
-          <TabPanel>
-             <div className="md:w-9/12 mx-auto flex gap-5 justify-center flex-wrap p-10 border rounded-xl bg-[#5b1ae9]/70 ">
-                {
-                    wednesday?.map((day,i)=><h1 key={i} className="py-2 px-4 text-xl font-medium text-black rounded-lg bg-white">{day}</h1>)
-                }
-            </div>
-          </TabPanel>
-          <TabPanel>
-             <div className="md:w-9/12 mx-auto flex gap-5 justify-center flex-wrap p-10 border rounded-xl bg-[#5b1ae9]/70 ">
-                {
-                    thursday?.map((day,i)=><h1 key={i} className="py-2 px-4 text-xl font-medium text-black rounded-lg bg-white">{day}</h1>)
-                }
-            </div>
-          </TabPanel>
-          <TabPanel>
-             <div className="md:w-9/12 mx-auto flex gap-5 justify-center flex-wrap p-10 border rounded-xl bg-[#5b1ae9]/70 ">
-                <h1  className="py-2 px-4 text-xl font-medium text-black rounded-lg bg-white">Off Day</h1>
-            </div>
-          </TabPanel>
-        </Tabs>
-      </div>
-      <div className="md:w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mb-6 gap-5">
-        {
-          classAll?.map(classTranier => 
-          <div key={classTranier._id} className="relative border rounded-lg border-[#5b1ae9]/60 bg-white ">
-            <img src={classTranier.photo} alt="" className="h-[300px] w-full"/>
-            <h1 className="text-center text-black text-3xl font-semibold my-5">{classTranier.tranier_name}</h1>
-            <Link to={`/classAll/${classTranier._id}`}>
-            <button className="bg-[#5b1ae9] w-full py-2 text-2xl font-medium text-white rounded-b-lg">Show details</button>
-            </Link>
-        </div>)
-        }
-      </div>
-      </div>
+    </div>
   );
 };
 

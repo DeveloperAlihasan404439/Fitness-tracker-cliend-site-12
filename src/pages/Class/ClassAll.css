@@ -1,20 +1,106 @@
-.react-tabs__tab-list{
-    border: none;
-}
-.react-tabs__tab--selected{
-    border: none;
-    background-color:#5b1ae9 !important;
-    color: white !important;
-}
-.react-tabs__tab{
-    font-size: 20px;
-    text-transform: uppercase;
-    background-color: black;
+.tabs_container {
+    margin-top: 20px;
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0 2px 16px rgba(0, 0, .1);
     border-radius: 10px;
-    color: white;
-    margin-right: 5px;
 }
-.react-tabs__tab>h1, h2, h3,h4, h5,h6{
-    background-color: gainsboro;
-    padding: 20px 0;
+
+.tabs_box {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    transition: .4s ease-in-out;
+    position: relative;
+}
+
+.tabs_box .tab_button {
+    font-size: 18px;
+    font-weight: 600;
+    background: none;
+    padding: 12px;
+    cursor: pointer;
+    border: none;
+    transition: .4s ease-in-out;
+}
+
+.tabs_box .tab_button.active {
+    color: #25BFBF;
+}
+
+.tabs_contant {
+    padding: 20px;
+    margin-top: 40px;
+    max-width: 90%;
+    width: 100%;
+    margin: auto;
+}
+
+.tabs_contant .contant {
+    display: none;
+    animation: moving .5s;
+}
+.day-content{
+    width: 100%;
+}
+.day-text{
+    width: 300px;
+    padding: 5px 10px;
+    margin-right: 3px ;
+    background-color: white;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 40px;
+    letter-spacing: 2px;
+}
+.day-text:nth-last-child(1){
+    margin-right: 0;
+}
+.day-discription{
+    line-height: 40px;
+    letter-spacing: 2px;
+    
+    background-color: white;
+}
+@keyframes moving {
+    from {
+        transform: translateX(50px);
+        opacity: 0;
+        transition: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+        transition: 1.8s ease;
+    }
+}
+
+.tabs_contant .contant.active {
+    display: block;
+}
+
+.tabs_container .contant {
+    margin-bottom: 10px;
+}
+.tabs_container .contant table {
+    overflow-x: scroll;
+    overflow: hidden;
+}
+@media (max-width: 1024px) {
+    .tabs_box {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .tabs_box .tab_button {
+        padding: 10px;
+    }
+    .tabs_contant {
+        margin-bottom: 10px;
+    }
 }

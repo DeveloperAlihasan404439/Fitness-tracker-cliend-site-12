@@ -2,7 +2,7 @@ import SectionTitle from "../Sheard/SectionTitle/SectionTitle";
 import "./Featured.css";
 const Featured = () => {
   return (
-    <div className="bg-[#F8F8F8]">
+    <div>
       <SectionTitle title="Highlighted Offerings" heading="Featured" />
       <div className="w-9/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         <div className="card">

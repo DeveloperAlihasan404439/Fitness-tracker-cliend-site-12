@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.navberAnimation{
+    box-shadow: none;
+    background-color: #EEE;
+}
+.animation{
+    transition: 4s ;
+    border-bottom: 3px solid white;
+    background-color: white;
+    color: black;
+    width: 90%;
+    margin: auto;
+    border-radius: 10px;
+}

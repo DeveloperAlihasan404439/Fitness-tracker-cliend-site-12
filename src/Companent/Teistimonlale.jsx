@@ -1,6 +1,6 @@
 const Teistimonlale = () => {
     return (
-<section className="my-8  ">
+<section className="my-8 ">
 	<div className="container flex flex-col items-center mx-auto">
 		<h1 className="p-4 text-4xl font-semibold leadi text-center">What our customers are saying about us</h1>
 		<h1 className="pb-5 md:pb-10 text-xl font-semibold leadi text-center md:w-8/12 mx-auto">Improved Health Awareness: "Wearing this tracker has made me more aware of my daily activity levels and encouraged me to live a healthier lifestyle</h1>

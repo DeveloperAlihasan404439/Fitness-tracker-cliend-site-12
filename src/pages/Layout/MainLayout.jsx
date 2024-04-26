@@ -5,7 +5,7 @@ import Footer from '../../Sheard/Footer';
 
 const MainLayout = () => {
     return (
-        <div>
+        <div className='bg-[#EEE]'>
             <Navber/>
             <Outlet/>
             <Footer/>
