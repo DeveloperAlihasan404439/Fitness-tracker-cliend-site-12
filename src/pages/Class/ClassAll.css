@@ -62,10 +62,13 @@
     margin-right: 0;
 }
 .day-discription{
-    line-height: 40px;
-    letter-spacing: 2px;
-    
-    background-color: white;
+    line-height: 100px;
+    text-align: center;
+    border-right: 2px solid white;
+    /* margin-right: 3px; */
+}
+.day-discription:nth-last-child(1){
+    margin-right: none;
 }
 @keyframes moving {
     from {
@@ -83,10 +86,12 @@
 
 .tabs_contant .contant.active {
     display: block;
+    transition: .4s;
 }
 
 .tabs_container .contant {
     margin-bottom: 10px;
+    transition: .4s;
 }
 .tabs_container .contant table {
     overflow-x: scroll;

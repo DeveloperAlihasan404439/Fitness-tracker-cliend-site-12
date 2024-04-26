@@ -32,217 +32,285 @@ const ClassAll = () => {
   const tabtext = [
     {
       id: 1,
-      title: 'Morning Flow',
-      discription:"Advanced Sequence",
-      time: '09.00 - 10.00',
-      link: 'Lily Carter',
-      hovertext: 'Morning relaxation and stretching',
-      bgColor: '#73C6CD',
-      timeDay: '09:00'
-
+      title: "Morning Flow",
+      discription: "Advanced Sequence",
+      time: "09.00 - 10.00",
+      link: "Lily Carter",
+      hovertext: "Morning relaxation and stretching",
+      bgColor: "#73C6CD",
+      timeDay: "09:00",
     },
     {
       id: 2,
-      title: 'Kundalini Yoga',
-      discription:"Basic Kundalini",
-      time: '09.00 - 10.00',
-      link: 'Grace Dean',
-      hovertext: 'Kundalini workflow for beginners',
-      bgColor: '#E8BC6F',
-      timeDay: '09:00'
+      title: "Kundalini Yoga",
+      discription: "Basic Kundalini",
+      time: "09.00 - 10.00",
+      link: "Grace Dean",
+      hovertext: "Kundalini workflow for beginners",
+      bgColor: "#E8BC6F",
+      timeDay: "09:00",
     },
     {
       id: 3,
-      title: 'Morning Flow',
-      discription:"Advanced Sequence",
-      time: '09.00 - 10.00',
-      link: 'Lily Carter',
-      hovertext: 'Morning relaxation and stretching',
-      bgColor: '#73C6CD',
-      timeDay: '09:00'
-
+      title: "Morning Flow",
+      discription: "Advanced Sequence",
+      time: "09.00 - 10.00",
+      link: "Lily Carter",
+      hovertext: "Morning relaxation and stretching",
+      bgColor: "#73C6CD",
+      timeDay: "09:00",
     },
     {
       id: 4,
-      title: 'Kundalini Yoga',
-      discription:"Basic Kundalini",
-      time: '09.00 - 10.00',
-      link: 'Grace Dean',
-      hovertext: 'Kundalini workflow for beginners',
-      bgColor: '#E8BC6F',
-      timeDay: '09:00'
+      title: "Kundalini Yoga",
+      discription: "Basic Kundalini",
+      time: "09.00 - 10.00",
+      link: "Grace Dean",
+      hovertext: "Kundalini workflow for beginners",
+      bgColor: "#E8BC6F",
+      timeDay: "09:00",
     },
     {
       id: 5,
-      title: 'Morning Flow',
-      discription:"Advanced Sequence",
-      time: '09.00 - 10.00',
-      link: 'Lily Carter',
-      hovertext: 'Morning relaxation and stretching',
-      bgColor: '#73C6CD',
-      timeDay: '09:00'
-
+      title: "Morning Flow",
+      discription: "Advanced Sequence",
+      time: "09.00 - 10.00",
+      link: "Lily Carter",
+      hovertext: "Morning relaxation and stretching",
+      bgColor: "#73C6CD",
+      timeDay: "09:00",
     },
     {
       id: 6,
-      title: 'Kundalini Yoga',
-      discription:"Basic Kundalini",
-      time: '09.00 - 10.00',
-      link: 'Grace Dean',
-      hovertext: 'Kundalini workflow for beginners',
-      bgColor: '#E8BC6F',
-      timeDay: '09:00'
+      title: "Kundalini Yoga",
+      discription: "Basic Kundalini",
+      time: "09.00 - 10.00",
+      link: "Grace Dean",
+      hovertext: "Kundalini workflow for beginners",
+      bgColor: "#E8BC6F",
+      timeDay: "09:00",
     },
-    {id: 7,
-      title: 'Morning Flow',
-      discription:"Advanced Sequence",
-      time: '09.00 - 10.00',
-      link: 'Lily Carter',
-      hovertext: 'Morning relaxation and stretching',
-      bgColor: '#73C6CD',
-      timeDay: '09:00'
+    {
+      id: 7,
+      title: "Morning Flow",
+      discription: "Advanced Sequence",
+      time: "09.00 - 10.00",
+      link: "Lily Carter",
+      hovertext: "Morning relaxation and stretching",
+      bgColor: "#73C6CD",
+      timeDay: "09:00",
     },
     {
       id: 8,
-      title: 'Ashtanga Yoga',
-      discription:"Weight Loss",
-      time: '10.00 - 11.00',
-      link: 'Sophia Keat',
-      hovertext: 'Cardio Workflow for weight loss',
-      bgColor: '#CD7399',
-      timeDay: '10:00'
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "10.00 - 11.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#CD7399",
+      timeDay: "10:00",
     },
     {
       id: 9,
-      title: '',
-      discription:"",
-      time: '',
-      link: '',
-      hovertext: '',
-      bgColor: '',
-      timeDay: ''
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "#EEE",
+      timeDay: "10:00",
     },
     {
       id: 10,
-      title: 'Ashtanga Yoga',
-      discription:"Weight Loss",
-      time: '10.00 - 11.00',
-      link: 'Sophia Keat',
-      hovertext: 'Cardio Workflow for weight loss',
-      bgColor: '#CD7399',
-      timeDay: '10:00'
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "10.00 - 11.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#CD7399",
+      timeDay: "10:00",
     },
     {
       id: 11,
-      title: '',
-      discription:"",
-      time: '',
-      link: '',
-      hovertext: '',
-      bgColor: '',
-      timeDay: ''
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "#EEE",
+      timeDay: "10:00",
     },
     {
       id: 12,
-      title: 'Ashtanga Yoga',
-      discription:"Weight Loss",
-      time: '10.00 - 11.00',
-      link: 'Sophia Keat',
-      hovertext: 'Cardio Workflow for weight loss',
-      bgColor: '#CD7399',
-      timeDay: '10:00'
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "10.00 - 11.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#CD7399",
+      timeDay: "10:00",
     },
     {
       id: 13,
-      title: '',
-      discription:"",
-      time: '',
-      link: '',
-      hovertext: '',
-      bgColor: '',
-      timeDay: ''
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "#EEE",
+      timeDay: "10:00",
     },
     {
       id: 14,
-      title: 'Kundalini Yoga',
-      discription:"Basic Kundalini",
-      time: '11.00 - 12.00',
-      link: 'Grace Dean',
-      hovertext: 'Grace Dean',
-      bgColor: '#CD7399',
-      timeDay: '11:00'
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "10.00 - 11.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#CD7399",
+      timeDay: "10:00",
     },
     {
       id: 15,
-      title: 'Ashtanga Yoga',
-      discription:"Weight Loss",
-      time: '11.00 - 12.00',
-      link: 'Sophia Keat',
-      hovertext: 'Cardio Workflow for weight loss',
-      bgColor: '#E8BC6F',
-      timeDay: '11:00'
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "11.00 - 12.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#E8BC6F",
+      timeDay: "11:00",
     },
     {
       id: 16,
-      title: 'Yoga Dance',
-      discription:"Cardio Fit",
-      time: '11.00 - 12.00',
-      link: 'Daniel Brooks',
-      hovertext: 'Yoga Sequence with dancing moves',
-      bgColor: '#62AED6',
-      timeDay: '11:00'
+      title: "Yoga Dance",
+      discription: "Cardio Fit",
+      time: "11.00 - 12.00",
+      link: "Daniel Brooks",
+      hovertext: "Yoga Sequence with dancing moves",
+      bgColor: "#62AED6",
+      timeDay: "11:00",
     },
     {
       id: 17,
-      title: '',
-      discription:"",
-      time: '',
-      link: '',
-      hovertext: '',
-      bgColor: '',
-      timeDay: '11:00'
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "11:00",
     },
     {
       id: 18,
-      title: 'Yoga Dance',
-      discription:"Cardio Fit",
-      time: '11.00 - 12.00',
-      link: 'Daniel Brooks',
-      hovertext: 'Yoga Sequence with dancing moves',
-      bgColor: '#62AED6',
-      timeDay: '11:00'
+      title: "Yoga Dance",
+      discription: "Cardio Fit",
+      time: "11.00 - 12.00",
+      link: "Daniel Brooks",
+      hovertext: "Yoga Sequence with dancing moves",
+      bgColor: "#62AED6",
+      timeDay: "11:00",
     },
     {
       id: 19,
-      title: '',
-      discription:"",
-      time: '',
-      link: '',
-      hovertext: '',
-      bgColor: '',
-      timeDay: '11:00'
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "11:00",
     },
     {
       id: 20,
-      title: 'Yoga Dance',
-      discription:"Cardio Fit",
-      time: '11.00 - 12.00',
-      link: 'Daniel Brooks',
-      hovertext: 'Yoga Sequence with dancing moves',
-      bgColor: '#62AED6',
-      timeDay: '11:00'
+      title: "Yoga Dance",
+      discription: "Cardio Fit",
+      time: "11.00 - 12.00",
+      link: "Daniel Brooks",
+      hovertext: "Yoga Sequence with dancing moves",
+      bgColor: "#62AED6",
+      timeDay: "11:00",
     },
     {
       id: 21,
-      title: 'Ashtanga Yoga',
-      discription:"Weight Loss",
-      time: '12.00 - 13.00',
-      link: 'Sophia Keat',
-      hovertext: 'Cardio Workflow for weight loss',
-      bgColor: '#E8BC6F',
-      timeDay: '12:00'
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "11.00 - 12.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#E8BC6F",
+      timeDay: "11:00",
     },
-  ]
+    {
+      id: 22,
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "12.00 - 13.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#E4926E",
+      timeDay: "12:00",
+    },
+    {
+      id: 23,
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "12:00",
+    },
+    {
+      id: 24,
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "12.00 - 13.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#E4926E",
+      timeDay: "12:00",
+    },
+    {
+      id: 25,
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "12:00",
+    },
+    {
+      id: 26,
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "12.00 - 13.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#E4926E",
+      timeDay: "12:00",
+    },
+    {
+      id: 27,
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "12:00",
+    },
+    {
+      id: 28,
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "12.00 - 13.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#E4926E",
+      timeDay: "12:00",
+    },
+  ];
   return (
     <div className="w-11/12 mx-auto mt-10">
       <h2 className="text-xl md:text-3xl font-bold text-center py-5 pb-10">
@@ -285,27 +353,96 @@ const ClassAll = () => {
                   <span className="day-text ">Saturday</span>
                   <span className="day-text ">Sunday</span>
                 </div>
-                <div className="mt-4 w-full flex justify-between bg-white">
-                  <div className ="day-discription">
-                  <span className=" ">helkdgf</span>
+                <div className="mt-4 w-full">
+                  <div className="grid grid-cols-8 w-full">
+                    <div className="day-discription bg-[#c7c7c7]">
+                      <p>09.00</p>
+                    </div>
+                    {tabtext.map((time) => {
+                      if (time.timeDay === "09:00") {
+                        return (
+                          time.id && (
+                            <div
+                              key={time.id}
+                              className={`day-discription ${
+                                time.id && "block"
+                              }`}
+                              style={{
+                                background: `${
+                                  time.bgColor ? time.bgColor : ""
+                                }`,
+                              }}
+                            >
+                              <h1>{time.title}</h1>
+                            </div>
+                          )
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
-                  <div className ="day-discription">
-                  <span className=" ">dgdsg</span>
+                  <div className="grid grid-cols-8 w-full">
+                    <div className="day-discription bg-[#EEE]">
+                      <p>10.00</p>
+                    </div>
+                    {tabtext.map((time) => {
+                      if (time.timeDay === "10:00") {
+                        return (
+                          <div
+                            key={time.id}
+                            className="day-discription bg-[#c7c7c7]"
+                            style={{
+                              background: `${time.bgColor ? time.bgColor : ""}`,
+                            }}
+                          >
+                            <h1>{time.title}</h1>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
-                  <div className ="day-discription">
-                  <span className=" "></span>
+                  <div className="grid grid-cols-8 w-full">
+                    <div className="day-discription bg-[#c7c7c7]">
+                      <p>11.00</p>
+                    </div>
+                    {tabtext.map((time) => {
+                      if (time.timeDay === "11:00") {
+                        return (
+                          <div
+                            key={time.id}
+                            className="day-discription bg-[#c7c7c7]"
+                            style={{
+                              background: `${time.bgColor ? time.bgColor : ""}`,
+                            }}
+                          >
+                            <h1>{time.title}</h1>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
-                  <div className ="day-discription">
-                  <span className=" "></span>
-                  </div>
-                  <div className ="day-discription">
-                  <span className=" "></span>
-                  </div>
-                  <div className ="day-discription">
-                  <span className=" "></span>
-                  </div>
-                  <div className ="day-discription">
-                  <span className=" "></span>
+                  <div className="grid grid-cols-8 w-full">
+                    <div className="day-discription bg-[#fff]">
+                      <p>12.00</p>
+                    </div>
+                    {tabtext.map((time) => {
+                      if (time.timeDay === "12:00") {
+                        return (
+                          <div
+                            key={time.id}
+                            className="day-discription bg-[#fff]"
+                            style={{
+                              background: `${time.bgColor ? time.bgColor : ""}`,
+                            }}
+                          >
+                            <h1>{time.title}</h1>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })}
                   </div>
                 </div>
               </div>
