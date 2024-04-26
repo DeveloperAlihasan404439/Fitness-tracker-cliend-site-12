@@ -54,7 +54,7 @@
     display: inline-block;
     padding: .5rem 1.3rem;
     font-size: 1.1rem;
-    border: 2px solid greenyellow;
+    border: 2px solid #09d446;
     border-radius: 2rem;
     line-height: 1;
     margin: 0 .2rem;
@@ -62,17 +62,17 @@
     text-transform: uppercase;
 }
 .nav-container.scrolling .btns{
-    border: 2px solid greenyellow;
+    border: 2px solid #09d446;
 
 }
 .nav-container.scrolling .btns.solid,
 .nav-container.scrolling .btns.transparents:hover {
-    background: greenyellow;
+    background: #09d446;
     color: black;
 }
 .btns.solid,
 .btns.transparents:hover {
-    background: greenyellow;
+    background: #09d446;
     color: black;
 }
 
@@ -162,7 +162,7 @@
     width: 1.6rem;
     height: 3px;
     border-radius: 3px;
-    background: greenyellow;
+    background: #09d446;
     position: relative;
     z-index: 1001;
     transition: .5s;
@@ -175,7 +175,7 @@
     position: absolute;
     width: inherit;
     height: inherit;
-    background-color: greenyellow;
+    background-color: #09d446;
     border-radius: 3px;
     transition: .5s;
 

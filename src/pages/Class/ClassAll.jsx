@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./ClassAll.css";
-import { Link } from "react-router-dom";
 const ClassAll = () => {
   const [tabIndex, setTabIndex] = useState("All Events");
   const tabsList = [
@@ -47,7 +46,7 @@ const ClassAll = () => {
       time: "09.00 - 10.00",
       link: "Grace Dean",
       hovertext: "Kundalini workflow for beginners",
-      bgColor: "#E8BC6F",
+      bgColor: "#f7c876",
       timeDay: "09:00",
     },
     {
@@ -67,7 +66,7 @@ const ClassAll = () => {
       time: "09.00 - 10.00",
       link: "Grace Dean",
       hovertext: "Kundalini workflow for beginners",
-      bgColor: "#E8BC6F",
+      bgColor: "#f7c876",
       timeDay: "09:00",
     },
     {
@@ -87,7 +86,7 @@ const ClassAll = () => {
       time: "09.00 - 10.00",
       link: "Grace Dean",
       hovertext: "Kundalini workflow for beginners",
-      bgColor: "#E8BC6F",
+      bgColor: "#f7c876",
       timeDay: "09:00",
     },
     {
@@ -177,7 +176,7 @@ const ClassAll = () => {
       time: "11.00 - 12.00",
       link: "Sophia Keat",
       hovertext: "Cardio Workflow for weight loss",
-      bgColor: "#E8BC6F",
+      bgColor: "#f7c876",
       timeDay: "11:00",
     },
     {
@@ -237,7 +236,7 @@ const ClassAll = () => {
       time: "11.00 - 12.00",
       link: "Sophia Keat",
       hovertext: "Cardio Workflow for weight loss",
-      bgColor: "#E8BC6F",
+      bgColor: "#f7c876",
       timeDay: "11:00",
     },
     {
@@ -310,6 +309,76 @@ const ClassAll = () => {
       bgColor: "#E4926E",
       timeDay: "12:00",
     },
+    {
+      id: 29,
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "01:00",
+    },
+    {
+      id: 30,
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "12.00 - 13.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#2dff6c",
+      timeDay: "01:00",
+    },
+    {
+      id: 31,
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "01:00",
+    },
+    {
+      id: 32,
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "12.00 - 13.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#2dff6c",
+      timeDay: "01:00",
+    },
+    {
+      id: 33,
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "01:00",
+    },
+    {
+      id: 34,
+      title: "Ashtanga Yoga",
+      discription: "Weight Loss",
+      time: "12.00 - 13.00",
+      link: "Sophia Keat",
+      hovertext: "Cardio Workflow for weight loss",
+      bgColor: "#2dff6c",
+      timeDay: "01:00",
+    },
+    {
+      id: 35,
+      title: "",
+      discription: "",
+      time: "",
+      link: "",
+      hovertext: "",
+      bgColor: "",
+      timeDay: "01:00",
+    },
   ];
   return (
     <div className="w-11/12 mx-auto mt-10">
@@ -329,7 +398,7 @@ const ClassAll = () => {
                 {tab.title}
               </button>
               {tabIndex === tab.title && (
-                <div className="absolute -bottom-[3px]  w-full h-1 bg-[#25BFBF] rounded-lg transition-all delay-700"></div>
+                <div className="absolute -bottom-[3px]  w-full h-1 bg-[#09d446] rounded-lg transition-all delay-700"></div>
               )}
             </div>
           ))}
@@ -356,26 +425,40 @@ const ClassAll = () => {
                 <div className="mt-4 w-full">
                   <div className="grid grid-cols-8 w-full">
                     <div className="day-discription bg-[#c7c7c7]">
-                      <p>09.00</p>
+                      <p className="w-full h-full flex justify-center items-center">
+                        09.00
+                      </p>
                     </div>
                     {tabtext.map((time) => {
                       if (time.timeDay === "09:00") {
                         return (
-                          time.id && (
                             <div
                               key={time.id}
-                              className={`day-discription ${
-                                time.id && "block"
-                              }`}
+                              className="day-discription bg-[#c7c7c7] text-white relative"
                               style={{
                                 background: `${
                                   time.bgColor ? time.bgColor : ""
-                                }`,
+                                } `, 
                               }}
                             >
-                              <h1>{time.title}</h1>
+                              <h1 className="text-lg font-bold">
+                                {time.title}
+                              </h1>
+                              <h1>{time.discription}</h1>
+                              <p>{time.time}</p>
+                              {time.link && (
+                                <button className="py-2 px-4 m-2 rounded-lg bg-red-400">
+                                  {time.link}
+                                </button>
+                              )}
+                              <div className="hoverText">
+                                <h1 className="text-lg font-bold">
+                                  {time.title}
+                                </h1>
+                                <h1>{time.hovertext}</h1>
+                              <div className="arror"></div>
+                              </div>
                             </div>
-                          )
                         );
                       }
                       return null;
@@ -383,20 +466,40 @@ const ClassAll = () => {
                   </div>
                   <div className="grid grid-cols-8 w-full">
                     <div className="day-discription bg-[#EEE]">
-                      <p>10.00</p>
+                      <p className="w-full h-full flex justify-center items-center">
+                        10.00
+                      </p>
                     </div>
                     {tabtext.map((time) => {
                       if (time.timeDay === "10:00") {
                         return (
                           <div
-                            key={time.id}
-                            className="day-discription bg-[#c7c7c7]"
-                            style={{
-                              background: `${time.bgColor ? time.bgColor : ""}`,
-                            }}
-                          >
-                            <h1>{time.title}</h1>
-                          </div>
+                              key={time.id}
+                              className="day-discription bg-[#c7c7c7] text-white relative"
+                              style={{
+                                background: `${
+                                  time.bgColor ? time.bgColor : ""
+                                } `, 
+                              }}
+                            >
+                              <h1 className="text-lg font-bold">
+                                {time.title}
+                              </h1>
+                              <h1>{time.discription}</h1>
+                              <p>{time.time}</p>
+                              {time.link && (
+                                <button className="py-2 px-4 m-2 rounded-lg bg-red-400">
+                                  {time.link}
+                                </button>
+                              )}
+                              <div className="hoverText">
+                                <h1 className="text-lg font-bold">
+                                  {time.title}
+                                </h1>
+                                <h1>{time.hovertext}</h1>
+                              <div className="arror"></div>
+                              </div>
+                            </div>
                         );
                       }
                       return null;
@@ -404,20 +507,40 @@ const ClassAll = () => {
                   </div>
                   <div className="grid grid-cols-8 w-full">
                     <div className="day-discription bg-[#c7c7c7]">
-                      <p>11.00</p>
+                      <p className="w-full h-full flex justify-center items-center">
+                        11.00
+                      </p>
                     </div>
                     {tabtext.map((time) => {
                       if (time.timeDay === "11:00") {
                         return (
                           <div
-                            key={time.id}
-                            className="day-discription bg-[#c7c7c7]"
-                            style={{
-                              background: `${time.bgColor ? time.bgColor : ""}`,
-                            }}
-                          >
-                            <h1>{time.title}</h1>
-                          </div>
+                              key={time.id}
+                              className="day-discription bg-[#c7c7c7] text-white relative"
+                              style={{
+                                background: `${
+                                  time.bgColor ? time.bgColor : ""
+                                } `, 
+                              }}
+                            >
+                              <h1 className="text-lg font-bold">
+                                {time.title}
+                              </h1>
+                              <h1>{time.discription}</h1>
+                              <p>{time.time}</p>
+                              {time.link && (
+                                <button className="py-2 px-4 m-2 rounded-lg bg-red-400">
+                                  {time.link}
+                                </button>
+                              )}
+                              <div className="hoverText">
+                                <h1 className="text-lg font-bold">
+                                  {time.title}
+                                </h1>
+                                <h1>{time.hovertext}</h1>
+                              <div className="arror"></div>
+                              </div>
+                            </div>
                         );
                       }
                       return null;
@@ -425,20 +548,81 @@ const ClassAll = () => {
                   </div>
                   <div className="grid grid-cols-8 w-full">
                     <div className="day-discription bg-[#fff]">
-                      <p>12.00</p>
+                      <p className="w-full h-full flex justify-center items-center">
+                        12.00
+                      </p>
                     </div>
                     {tabtext.map((time) => {
                       if (time.timeDay === "12:00") {
                         return (
                           <div
-                            key={time.id}
-                            className="day-discription bg-[#fff]"
-                            style={{
-                              background: `${time.bgColor ? time.bgColor : ""}`,
-                            }}
-                          >
-                            <h1>{time.title}</h1>
-                          </div>
+                              key={time.id}
+                              className="day-discription bg-[#c7c7c7] text-white relative"
+                              style={{
+                                background: `${
+                                  time.bgColor ? time.bgColor : ""
+                                } `, 
+                              }}
+                            >
+                              <h1 className="text-lg font-bold">
+                                {time.title}
+                              </h1>
+                              <h1>{time.discription}</h1>
+                              <p>{time.time}</p>
+                              {time.link && (
+                                <button className="py-2 px-4 m-2 rounded-lg bg-red-400">
+                                  {time.link}
+                                </button>
+                              )}
+                              <div className="hoverText">
+                                <h1 className="text-lg font-bold">
+                                  {time.title}
+                                </h1>
+                                <h1>{time.hovertext}</h1>
+                              <div className="arror"></div>
+                              </div>
+                            </div>
+                        );
+                      }
+                      return null;
+                    })}
+                  </div>
+                  <div className="grid grid-cols-8 w-full">
+                    <div className="day-discription bg-[#c7c7c7]">
+                      <p className="w-full h-full flex justify-center items-center">
+                        02.00
+                      </p>
+                    </div>
+                    {tabtext.map((time) => {
+                      if (time.timeDay === "01:00") {
+                        return (
+                          <div
+                              key={time.id}
+                              className="day-discription bg-[#c7c7c7] text-white relative"
+                              style={{
+                                background: `${
+                                  time.bgColor ? time.bgColor : ""
+                                } `, 
+                              }}
+                            >
+                              <h1 className="text-lg font-bold">
+                                {time.title}
+                              </h1>
+                              <h1>{time.discription}</h1>
+                              <p>{time.time}</p>
+                              {time.link && (
+                                <button className="py-2 px-4 m-2 rounded-lg bg-red-400">
+                                  {time.link}
+                                </button>
+                              )}
+                              <div className="hoverText">
+                                <h1 className="text-lg font-bold">
+                                  {time.title}
+                                </h1>
+                                <h1>{time.hovertext}</h1>
+                              <div className="arror"></div>
+                              </div>
+                            </div>
                         );
                       }
                       return null;
